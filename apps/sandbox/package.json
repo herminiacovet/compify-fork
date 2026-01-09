@@ -1,0 +1,36 @@
+{
+  "name": "compify-sandbox",
+  "version": "1.0.0",
+  "description": "Compify MVP Game Sandbox",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "build:prod": "vite build --mode production",
+    "serve": "vite preview --host",
+    "clean": "rm -rf dist",
+    "verify": "node verify-deployment.js",
+    "test": "vitest --run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "fast-check": "^4.5.3",
+    "jsdom": "^25.0.1",
+    "terser": "^5.44.1",
+    "vite": "^5.0.0",
+    "vitest": "^4.0.16"
+  },
+  "dependencies": {
+    "phaser": "^3.80.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}

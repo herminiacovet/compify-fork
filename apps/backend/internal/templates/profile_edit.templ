@@ -1,0 +1,157 @@
+package templates
+
+// FirstNameEditForm renders an inline edit form for first name
+templ FirstNameEditForm(currentValue string) {
+	<div id="first-name-display">
+		<form 
+			hx-post="/dashboard/profile/update/first-name"
+			hx-target="#first-name-display"
+			hx-swap="outerHTML"
+			style="display: inline-flex; align-items: center; gap: 0.5rem;"
+		>
+			<input 
+				type="text" 
+				name="first_name" 
+				value={ currentValue }
+				class="form-input"
+				style="width: 150px; padding: 0.25rem 0.5rem; font-size: 0.9rem;"
+				maxlength="100"
+				required
+			/>
+			<button type="submit" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Save</button>
+			<button 
+				type="button" 
+				class="btn btn-secondary" 
+				style="padding: 0.25rem 0.5rem; font-size: 0.8rem;"
+				hx-get="/dashboard/profile/cancel/first-name"
+				hx-target="#first-name-display"
+				hx-swap="outerHTML"
+			>
+				Cancel
+			</button>
+		</form>
+	</div>
+}
+
+// LastNameEditForm renders an inline edit form for last name
+templ LastNameEditForm(currentValue string) {
+	<div id="last-name-display">
+		<form 
+			hx-post="/dashboard/profile/update/last-name"
+			hx-target="#last-name-display"
+			hx-swap="outerHTML"
+			style="display: inline-flex; align-items: center; gap: 0.5rem;"
+		>
+			<input 
+				type="text" 
+				name="last_name" 
+				value={ currentValue }
+				class="form-input"
+				style="width: 150px; padding: 0.25rem 0.5rem; font-size: 0.9rem;"
+				maxlength="100"
+				required
+			/>
+			<button type="submit" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Save</button>
+			<button 
+				type="button" 
+				class="btn btn-secondary" 
+				style="padding: 0.25rem 0.5rem; font-size: 0.8rem;"
+				hx-get="/dashboard/profile/cancel/last-name"
+				hx-target="#last-name-display"
+				hx-swap="outerHTML"
+			>
+				Cancel
+			</button>
+		</form>
+	</div>
+}
+
+// BioEditForm renders an inline edit form for bio
+templ BioEditForm(currentValue string) {
+	<div id="bio-display">
+		<form 
+			hx-post="/dashboard/profile/update/bio"
+			hx-target="#bio-display"
+			hx-swap="outerHTML"
+			style="display: block;"
+		>
+			<textarea 
+				name="bio" 
+				class="form-input"
+				style="width: 100%; min-height: 80px; padding: 0.5rem; font-size: 0.9rem; resize: vertical;"
+				maxlength="1000"
+				placeholder="Tell us about yourself..."
+			>{ currentValue }</textarea>
+			<div style="margin-top: 0.5rem; display: flex; gap: 0.5rem;">
+				<button type="submit" class="btn" style="padding: 0.25rem 0.5rem; font-size: 0.8rem;">Save</button>
+				<button 
+					type="button" 
+					class="btn btn-secondary" 
+					style="padding: 0.25rem 0.5rem; font-size: 0.8rem;"
+					hx-get="/dashboard/profile/cancel/bio"
+					hx-target="#bio-display"
+					hx-swap="outerHTML"
+				>
+					Cancel
+				</button>
+			</div>
+		</form>
+	</div>
+}
+
+// FirstNameDisplay renders the first name display with edit button
+templ FirstNameDisplay(value string) {
+	<span class="info-value" id="first-name-display">
+		if value != "" {
+			{ value }
+		} else {
+			<em>Not set</em>
+		}
+	</span>
+	<button 
+		class="edit-btn" 
+		hx-get="/dashboard/profile/edit/first-name"
+		hx-target="#first-name-display"
+		hx-swap="outerHTML"
+	>
+		Edit
+	</button>
+}
+
+// LastNameDisplay renders the last name display with edit button
+templ LastNameDisplay(value string) {
+	<span class="info-value" id="last-name-display">
+		if value != "" {
+			{ value }
+		} else {
+			<em>Not set</em>
+		}
+	</span>
+	<button 
+		class="edit-btn" 
+		hx-get="/dashboard/profile/edit/last-name"
+		hx-target="#last-name-display"
+		hx-swap="outerHTML"
+	>
+		Edit
+	</button>
+}
+
+// BioDisplay renders the bio display with edit button
+templ BioDisplay(value string) {
+	<span class="info-value" id="bio-display">
+		if value != "" {
+			{ value }
+		} else {
+			<em>Not set</em>
+		}
+	</span>
+	<button 
+		class="edit-btn" 
+		hx-get="/dashboard/profile/edit/bio"
+		hx-target="#bio-display"
+		hx-swap="outerHTML"
+	>
+		Edit
+	</button>
+}

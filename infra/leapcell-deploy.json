@@ -1,0 +1,61 @@
+{
+  "name": "compify-backend",
+  "type": "web",
+  "runtime": "go",
+  "buildCommand": "cd apps/backend && go build -o ../../dist/compify-backend ./cmd",
+  "startCommand": "./dist/compify-backend",
+  "port": 8080,
+  "healthCheck": {
+    "path": "/health",
+    "timeout": 30,
+    "interval": 60
+  },
+  "scaling": {
+    "minInstances": 1,
+    "maxInstances": 3,
+    "targetCPU": 70
+  },
+  "resources": {
+    "cpu": "0.5",
+    "memory": "512Mi",
+    "disk": "1Gi"
+  },
+  "environment": {
+    "PORT": "8080",
+    "ENVIRONMENT": "production",
+    "SESSION_SECRET": "${SESSION_SECRET}",
+    "CORS_ORIGINS": "https://compify.com,https://sandbox.compify.com",
+    "STATIC_SITE_URL": "https://compify.com",
+    "SANDBOX_URL": "https://sandbox.compify.com",
+    "SECURE_COOKIES": "true",
+    "CSRF_SECRET": "${CSRF_SECRET}",
+    "RATE_LIMIT_REQUESTS": "100",
+    "RATE_LIMIT_WINDOW": "60",
+    "LOG_LEVEL": "info",
+    "LOG_FORMAT": "json",
+    "CACHE_TTL_SECONDS": "300",
+    "STATIC_CACHE_TTL_SECONDS": "31536000",
+    "HEALTH_CHECK_TIMEOUT": "5s"
+  },
+  "secrets": [
+    "SESSION_SECRET",
+    "CSRF_SECRET"
+  ],
+  "domains": [
+    "api.compify.com"
+  ],
+  "ssl": true,
+  "monitoring": {
+    "enabled": true,
+    "alerts": {
+      "errorRate": {
+        "threshold": 5,
+        "duration": "5m"
+      },
+      "responseTime": {
+        "threshold": 1000,
+        "duration": "5m"
+      }
+    }
+  }
+}

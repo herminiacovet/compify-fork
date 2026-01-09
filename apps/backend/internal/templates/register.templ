@@ -1,0 +1,198 @@
+package templates
+
+// RegisterPage renders the registration page
+templ RegisterPage(errorMessage string) {
+	@BaseLayout("Register", RegisterForm(errorMessage))
+}
+
+// RegisterForm renders the registration form with HTMX attributes
+templ RegisterForm(errorMessage string) {
+	<div class="form-container">
+		<h2 class="text-center">Create Your Account</h2>
+		
+		if errorMessage != "" {
+			<div class="alert alert-error" id="error-message">
+				{ errorMessage }
+			</div>
+		}
+		
+		<form 
+			hx-post="/auth/register" 
+			hx-target="#register-form-container"
+			hx-swap="outerHTML"
+			hx-indicator="#register-spinner"
+			id="register-form-container"
+		>
+			<div class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input 
+					type="email" 
+					id="email" 
+					name="email" 
+					class="form-input" 
+					required
+					autocomplete="email"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="username" class="form-label">Username</label>
+				<input 
+					type="text" 
+					id="username" 
+					name="username" 
+					class="form-input" 
+					required
+					autocomplete="username"
+					pattern="[a-zA-Z0-9_-]{3,30}"
+					title="Username must be 3-30 characters and contain only letters, numbers, underscores, and hyphens"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input 
+					type="password" 
+					id="password" 
+					name="password" 
+					class="form-input" 
+					required
+					autocomplete="new-password"
+					minlength="8"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="confirm_password" class="form-label">Confirm Password</label>
+				<input 
+					type="password" 
+					id="confirm_password" 
+					name="confirm_password" 
+					class="form-input" 
+					required
+					autocomplete="new-password"
+					minlength="8"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" class="btn">
+					<span id="register-spinner" class="htmx-indicator">Creating account...</span>
+					<span class="htmx-indicator-hide">Create Account</span>
+				</button>
+			</div>
+		</form>
+		
+		<div class="text-center mt-2">
+			<p>Already have an account? <a href="/login" class="link">Login here</a></p>
+		</div>
+	</div>
+	
+	<style>
+		.htmx-indicator {
+			display: none;
+		}
+		
+		.htmx-request .htmx-indicator {
+			display: inline;
+		}
+		
+		.htmx-request .htmx-indicator-hide {
+			display: none;
+		}
+	</style>
+}
+
+// RegisterFormError renders the registration form with an error message
+templ RegisterFormError(errorMessage string) {
+	<div id="register-form-container">
+		<div class="alert alert-error">
+			{ errorMessage }
+		</div>
+		
+		<form 
+			hx-post="/auth/register" 
+			hx-target="#register-form-container"
+			hx-swap="outerHTML"
+			hx-indicator="#register-spinner"
+		>
+			<div class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input 
+					type="email" 
+					id="email" 
+					name="email" 
+					class="form-input" 
+					required
+					autocomplete="email"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="username" class="form-label">Username</label>
+				<input 
+					type="text" 
+					id="username" 
+					name="username" 
+					class="form-input" 
+					required
+					autocomplete="username"
+					pattern="[a-zA-Z0-9_-]{3,30}"
+					title="Username must be 3-30 characters and contain only letters, numbers, underscores, and hyphens"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input 
+					type="password" 
+					id="password" 
+					name="password" 
+					class="form-input" 
+					required
+					autocomplete="new-password"
+					minlength="8"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="confirm_password" class="form-label">Confirm Password</label>
+				<input 
+					type="password" 
+					id="confirm_password" 
+					name="confirm_password" 
+					class="form-input" 
+					required
+					autocomplete="new-password"
+					minlength="8"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" class="btn">
+					<span id="register-spinner" class="htmx-indicator">Creating account...</span>
+					<span class="htmx-indicator-hide">Create Account</span>
+				</button>
+			</div>
+		</form>
+		
+		<div class="text-center mt-2">
+			<p>Already have an account? <a href="/login" class="link">Login here</a></p>
+		</div>
+	</div>
+}
+
+// RegisterSuccess renders a success message and redirect
+templ RegisterSuccess() {
+	<div id="register-form-container">
+		<div class="alert alert-success">
+			Registration successful! Redirecting to dashboard...
+		</div>
+	</div>
+	
+	<script>
+		setTimeout(function() {
+			window.location.href = '/dashboard';
+		}, 1500);
+	</script>
+}

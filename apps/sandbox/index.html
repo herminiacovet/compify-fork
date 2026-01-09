@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compify Game Sandbox</title>
+    <meta name="description" content="Asteroid Shooter - A simple space shooter game built with Phaser.js">
+    <meta name="keywords" content="game, phaser, asteroid, shooter, space, browser game">
+    <meta name="author" content="Compify">
+    
+    <!-- Optimize for static deployment -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        
+        #game-container {
+            border: 2px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+            background: #000;
+        }
+        
+        .game-info {
+            color: #ffffff;
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+        
+        .loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 18px;
+            z-index: 1000;
+        }
+        
+        /* Responsive design for mobile */
+        @media (max-width: 850px) {
+            #game-container {
+                transform: scale(0.9);
+                border: 1px solid #333;
+            }
+        }
+        
+        @media (max-width: 750px) {
+            #game-container {
+                transform: scale(0.8);
+            }
+        }
+        
+        /* Hide scrollbars */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading">Loading game...</div>
+    <div id="game-container"></div>
+    <div class="game-info">
+        Use arrow keys to move • Space to shoot • ESC to pause
+    </div>
+    
+    <script type="module" src="./src/main.js"></script>
+    
+    <script>
+        // Hide loading indicator once game starts
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loading = document.getElementById('loading');
+                if (loading) {
+                    loading.style.display = 'none';
+                }
+            }, 1000);
+        });
+        
+        // Prevent context menu on right click
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        
+        // Prevent zoom on mobile
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        });
+        
+        // Prevent double-tap zoom
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+    </script>
+</body>
+</html>

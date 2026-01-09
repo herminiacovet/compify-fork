@@ -1,0 +1,67 @@
+# Cloudflare Pages Configuration
+# This file configures build settings and deployment for the static site
+
+[build]
+  command = "cd apps/web-static && npm install && npm run build"
+  publish = "apps/web-static/dist"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+# Environment variables for production
+[env.production]
+  BACKEND_URL = "https://api.compify.com"
+  SANDBOX_URL = "https://sandbox.compify.com"
+  SITE_URL = "https://compify.com"
+  ASTRO_SITE = "https://compify.com"
+
+# Environment variables for preview deployments
+[env.preview]
+  BACKEND_URL = "https://api-preview.compify.com"
+  SANDBOX_URL = "https://sandbox-preview.compify.com"
+  SITE_URL = "https://preview.compify.com"
+  ASTRO_SITE = "https://preview.compify.com"
+
+# Redirects and rewrites
+[[redirects]]
+  from = "/api/*"
+  to = "https://api.compify.com/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/sandbox/*"
+  to = "https://sandbox.compify.com/:splat"
+  status = 200
+  force = true
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, s-maxage=7200"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

@@ -1,0 +1,423 @@
+package templates
+
+import "compify-backend/internal/models"
+import "fmt"
+
+// DashboardPage renders the complete dashboard page
+templ DashboardPage(data models.DashboardData) {
+	@BaseLayout("Dashboard", DashboardContent(data))
+}
+
+// DashboardContent renders the main dashboard content
+templ DashboardContent(data models.DashboardData) {
+	<div class="dashboard-container">
+		<div class="dashboard-header">
+			<h1>Welcome back, { data.User.Profile.FullName() }!</h1>
+			<div class="user-actions">
+				<form hx-post="/auth/logout" hx-confirm="Are you sure you want to logout?">
+					<button type="submit" class="btn btn-secondary">Logout</button>
+				</form>
+			</div>
+		</div>
+		
+		<div class="dashboard-grid">
+			<div class="dashboard-section">
+				@ProfileSection(data.User)
+			</div>
+			
+			<div class="dashboard-section">
+				@RegistrationSection(data.Registration)
+			</div>
+			
+			<div class="dashboard-section">
+				@AnnouncementsSection(data.Announcements)
+			</div>
+			
+			<div class="dashboard-section">
+				@StatsSection(data.Stats)
+			</div>
+		</div>
+	</div>
+	
+	<style>
+		.dashboard-container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 0 20px;
+		}
+		
+		.dashboard-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 2rem;
+			padding-bottom: 1rem;
+			border-bottom: 1px solid #e9ecef;
+		}
+		
+		.dashboard-header h1 {
+			color: #2c3e50;
+			font-size: 2rem;
+			margin: 0;
+		}
+		
+		.user-actions {
+			display: flex;
+			gap: 1rem;
+		}
+		
+		.btn-secondary {
+			background: #6c757d;
+		}
+		
+		.btn-secondary:hover {
+			background: #545b62;
+		}
+		
+		.dashboard-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 2rem;
+		}
+		
+		.dashboard-section {
+			background: #fff;
+			border-radius: 8px;
+			padding: 1.5rem;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+		}
+		
+		.section-title {
+			font-size: 1.25rem;
+			font-weight: 600;
+			color: #2c3e50;
+			margin-bottom: 1rem;
+			padding-bottom: 0.5rem;
+			border-bottom: 2px solid #007bff;
+		}
+		
+		.profile-info {
+			display: grid;
+			gap: 1rem;
+		}
+		
+		.info-item {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 0.5rem 0;
+			border-bottom: 1px solid #f8f9fa;
+		}
+		
+		.info-label {
+			font-weight: 500;
+			color: #6c757d;
+		}
+		
+		.info-value {
+			color: #2c3e50;
+		}
+		
+		.edit-btn {
+			background: none;
+			border: none;
+			color: #007bff;
+			cursor: pointer;
+			font-size: 0.875rem;
+			text-decoration: underline;
+		}
+		
+		.edit-btn:hover {
+			color: #0056b3;
+		}
+		
+		.registration-status {
+			text-align: center;
+			padding: 2rem;
+		}
+		
+		.status-badge {
+			display: inline-block;
+			padding: 0.5rem 1rem;
+			border-radius: 20px;
+			font-weight: 500;
+			text-transform: uppercase;
+			font-size: 0.875rem;
+		}
+		
+		.status-pending {
+			background: #fff3cd;
+			color: #856404;
+		}
+		
+		.status-confirmed {
+			background: #d4edda;
+			color: #155724;
+		}
+		
+		.status-not-registered {
+			background: #f8d7da;
+			color: #721c24;
+		}
+		
+		.announcement {
+			margin-bottom: 1rem;
+			padding: 1rem;
+			border-radius: 4px;
+			border-left: 4px solid #007bff;
+		}
+		
+		.announcement-urgent {
+			border-left-color: #dc3545;
+			background: #f8d7da;
+		}
+		
+		.announcement-high {
+			border-left-color: #fd7e14;
+			background: #fff3cd;
+		}
+		
+		.announcement-medium {
+			border-left-color: #007bff;
+			background: #d1ecf1;
+		}
+		
+		.announcement-low {
+			border-left-color: #6c757d;
+			background: #f8f9fa;
+		}
+		
+		.announcement-title {
+			font-weight: 600;
+			margin-bottom: 0.5rem;
+		}
+		
+		.announcement-content {
+			color: #6c757d;
+			font-size: 0.9rem;
+		}
+		
+		.announcement-date {
+			font-size: 0.8rem;
+			color: #adb5bd;
+			margin-top: 0.5rem;
+		}
+		
+		.stats-grid {
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
+		}
+		
+		.stat-item {
+			text-align: center;
+			padding: 1rem;
+			background: #f8f9fa;
+			border-radius: 4px;
+		}
+		
+		.stat-value {
+			font-size: 2rem;
+			font-weight: bold;
+			color: #007bff;
+		}
+		
+		.stat-label {
+			font-size: 0.875rem;
+			color: #6c757d;
+			margin-top: 0.5rem;
+		}
+		
+		.no-announcements {
+			text-align: center;
+			color: #6c757d;
+			font-style: italic;
+			padding: 2rem;
+		}
+	</style>
+}
+
+// ProfileSection renders the user profile section with HTMX edit capabilities
+templ ProfileSection(user models.User) {
+	<div id="profile-section">
+		<h2 class="section-title">Profile Information</h2>
+		<div class="profile-info">
+			<div class="info-item">
+				<span class="info-label">Email:</span>
+				<span class="info-value">{ user.Email }</span>
+			</div>
+			<div class="info-item">
+				<span class="info-label">Username:</span>
+				<span class="info-value">{ user.Username }</span>
+			</div>
+			<div class="info-item">
+				<span class="info-label">First Name:</span>
+				<span class="info-value" id="first-name-display">
+					if user.Profile.FirstName != "" {
+						{ user.Profile.FirstName }
+					} else {
+						<em>Not set</em>
+					}
+				</span>
+				<button 
+					class="edit-btn" 
+					hx-get="/dashboard/profile/edit/first-name"
+					hx-target="#first-name-display"
+					hx-swap="outerHTML"
+				>
+					Edit
+				</button>
+			</div>
+			<div class="info-item">
+				<span class="info-label">Last Name:</span>
+				<span class="info-value" id="last-name-display">
+					if user.Profile.LastName != "" {
+						{ user.Profile.LastName }
+					} else {
+						<em>Not set</em>
+					}
+				</span>
+				<button 
+					class="edit-btn" 
+					hx-get="/dashboard/profile/edit/last-name"
+					hx-target="#last-name-display"
+					hx-swap="outerHTML"
+				>
+					Edit
+				</button>
+			</div>
+			<div class="info-item">
+				<span class="info-label">Bio:</span>
+				<span class="info-value" id="bio-display">
+					if user.Profile.Bio != "" {
+						{ user.Profile.Bio }
+					} else {
+						<em>Not set</em>
+					}
+				</span>
+				<button 
+					class="edit-btn" 
+					hx-get="/dashboard/profile/edit/bio"
+					hx-target="#bio-display"
+					hx-swap="outerHTML"
+				>
+					Edit
+				</button>
+			</div>
+		</div>
+	</div>
+}
+
+// RegistrationSection renders the registration status section
+templ RegistrationSection(registration *models.Registration) {
+	<div id="registration-section">
+		<h2 class="section-title">Registration Status</h2>
+		<div class="registration-status">
+			if registration != nil {
+				<div class="status-badge status-{ string(registration.Status) }">
+					{ string(registration.Status) }
+				</div>
+				<p>Registered on { registration.RegisteredAt.Format("January 2, 2006") }</p>
+				if registration.Status == models.RegistrationStatusPending {
+					<p><small>Your registration is being reviewed. You'll receive confirmation soon.</small></p>
+				} else if registration.Status == models.RegistrationStatusConfirmed {
+					<p><small>Your registration is confirmed! Check announcements for updates.</small></p>
+				} else if registration.Status == models.RegistrationStatusWaitlist {
+					<p><small>You're on the waitlist. We'll notify you if a spot opens up.</small></p>
+				}
+				if registration.Data != nil {
+					if teamName, exists := registration.GetDataString("team_name"); exists && teamName != "" {
+						<p><strong>Team:</strong> { teamName }</p>
+					}
+					if regType, exists := registration.GetDataString("registration_type"); exists {
+						<p><strong>Type:</strong> { regType }</p>
+					}
+				}
+			} else {
+				<div class="status-badge status-not-registered">
+					Not Registered
+				</div>
+				<p>You haven't registered for any competitions yet.</p>
+				<button 
+					class="btn" 
+					style="margin-top: 1rem;"
+					hx-post="/dashboard/registration/create"
+					hx-target="#registration-section"
+					hx-swap="outerHTML"
+					hx-confirm="Are you sure you want to register for Compify 2024?"
+				>
+					Register Now
+				</button>
+			}
+		</div>
+	</div>
+}
+
+// AnnouncementsSection renders the announcements section
+templ AnnouncementsSection(announcements []models.Announcement) {
+	<div id="announcements-section">
+		<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+			<h2 class="section-title" style="margin-bottom: 0;">Announcements</h2>
+			<button 
+				class="btn btn-secondary" 
+				style="padding: 0.25rem 0.5rem; font-size: 0.8rem;"
+				hx-get="/dashboard/announcements/refresh"
+				hx-target="#announcements-section"
+				hx-swap="outerHTML"
+				title="Refresh announcements"
+			>
+				↻ Refresh
+			</button>
+		</div>
+		if len(announcements) > 0 {
+			for _, announcement := range announcements {
+				<div class="announcement { announcement.GetPriorityClass() }">
+					<div class="announcement-title">{ announcement.Title }</div>
+					<div class="announcement-content">{ announcement.Content }</div>
+					<div class="announcement-date">{ announcement.CreatedAt.Format("January 2, 2006 at 3:04 PM") }</div>
+				</div>
+			}
+		} else {
+			<div class="no-announcements">
+				No announcements at this time.
+			</div>
+		}
+	</div>
+}
+
+// StatsSection renders the user statistics section
+templ StatsSection(stats models.UserStats) {
+	<div id="stats-section">
+		<h2 class="section-title">Your Stats</h2>
+		<div class="stats-grid">
+			<div class="stat-item">
+				<div class="stat-value">{ fmt.Sprintf("%d", stats.AccountAge) }</div>
+				<div class="stat-label">Days Active</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-value">
+					if stats.ProfileComplete {
+						✓
+					} else {
+						✗
+					}
+				</div>
+				<div class="stat-label">Profile Complete</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-value">{ fmt.Sprintf("%d", stats.RegistrationCount) }</div>
+				<div class="stat-label">Registrations</div>
+			</div>
+			<div class="stat-item">
+				<div class="stat-value">
+					if !stats.LastLoginAt.IsZero() {
+						{ stats.LastLoginAt.Format("Jan 2") }
+					} else {
+						Never
+					}
+				</div>
+				<div class="stat-label">Last Login</div>
+			</div>
+		</div>
+	</div>
+}

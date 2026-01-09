@@ -1,0 +1,54 @@
+# Render.com deployment configuration for Go backend
+# Place this file in the root of your repository for automatic deployment
+
+services:
+  - type: web
+    name: compify-backend
+    env: go
+    buildCommand: "cd apps/backend && go build -o ../../dist/compify-backend ./cmd"
+    startCommand: "./dist/compify-backend"
+    plan: free
+    region: oregon
+    buildFilter:
+      paths:
+        - apps/backend/**
+        - shared/**
+        - go.mod
+        - go.sum
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: ENVIRONMENT
+        value: production
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://compify.com,https://sandbox.compify.com
+      - key: STATIC_SITE_URL
+        value: https://compify.com
+      - key: SANDBOX_URL
+        value: https://sandbox.compify.com
+      - key: SECURE_COOKIES
+        value: true
+      - key: CSRF_SECRET
+        generateValue: true
+      - key: RATE_LIMIT_REQUESTS
+        value: 100
+      - key: RATE_LIMIT_WINDOW
+        value: 60
+      - key: LOG_LEVEL
+        value: info
+      - key: LOG_FORMAT
+        value: json
+      - key: CACHE_TTL_SECONDS
+        value: 300
+      - key: STATIC_CACHE_TTL_SECONDS
+        value: 31536000
+      - key: HEALTH_CHECK_TIMEOUT
+        value: 5s
+    healthCheckPath: /health
+    autoDeploy: true
+    disk:
+      name: compify-data
+      mountPath: /data
+      sizeGB: 1

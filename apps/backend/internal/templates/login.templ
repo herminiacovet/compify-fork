@@ -1,0 +1,142 @@
+package templates
+
+// LoginPage renders the login page
+templ LoginPage(errorMessage string) {
+	@BaseLayout("Login", LoginForm(errorMessage))
+}
+
+// LoginForm renders the login form with HTMX attributes
+templ LoginForm(errorMessage string) {
+	<div class="form-container">
+		<h2 class="text-center">Login to Your Account</h2>
+		
+		if errorMessage != "" {
+			<div class="alert alert-error" id="error-message">
+				{ errorMessage }
+			</div>
+		}
+		
+		<form 
+			hx-post="/auth/login" 
+			hx-target="#login-form-container"
+			hx-swap="outerHTML"
+			hx-indicator="#login-spinner"
+			id="login-form-container"
+		>
+			<div class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input 
+					type="email" 
+					id="email" 
+					name="email" 
+					class="form-input" 
+					required
+					autocomplete="email"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input 
+					type="password" 
+					id="password" 
+					name="password" 
+					class="form-input" 
+					required
+					autocomplete="current-password"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" class="btn">
+					<span id="login-spinner" class="htmx-indicator">Logging in...</span>
+					<span class="htmx-indicator-hide">Login</span>
+				</button>
+			</div>
+		</form>
+		
+		<div class="text-center mt-2">
+			<p>Don't have an account? <a href="/register" class="link">Register here</a></p>
+		</div>
+	</div>
+	
+	<style>
+		.htmx-indicator {
+			display: none;
+		}
+		
+		.htmx-request .htmx-indicator {
+			display: inline;
+		}
+		
+		.htmx-request .htmx-indicator-hide {
+			display: none;
+		}
+	</style>
+}
+
+// LoginFormError renders the login form with an error message
+templ LoginFormError(errorMessage string) {
+	<div id="login-form-container">
+		<div class="alert alert-error">
+			{ errorMessage }
+		</div>
+		
+		<form 
+			hx-post="/auth/login" 
+			hx-target="#login-form-container"
+			hx-swap="outerHTML"
+			hx-indicator="#login-spinner"
+		>
+			<div class="form-group">
+				<label for="email" class="form-label">Email</label>
+				<input 
+					type="email" 
+					id="email" 
+					name="email" 
+					class="form-input" 
+					required
+					autocomplete="email"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<label for="password" class="form-label">Password</label>
+				<input 
+					type="password" 
+					id="password" 
+					name="password" 
+					class="form-input" 
+					required
+					autocomplete="current-password"
+				/>
+			</div>
+			
+			<div class="form-group">
+				<button type="submit" class="btn">
+					<span id="login-spinner" class="htmx-indicator">Logging in...</span>
+					<span class="htmx-indicator-hide">Login</span>
+				</button>
+			</div>
+		</form>
+		
+		<div class="text-center mt-2">
+			<p>Don't have an account? <a href="/register" class="link">Register here</a></p>
+		</div>
+	</div>
+}
+
+// LoginSuccess renders a success message and redirect
+templ LoginSuccess() {
+	<div id="login-form-container">
+		<div class="alert alert-success">
+			Login successful! Redirecting to dashboard...
+		</div>
+	</div>
+	
+	<script>
+		setTimeout(function() {
+			window.location.href = '/dashboard';
+		}, 1500);
+	</script>
+}
