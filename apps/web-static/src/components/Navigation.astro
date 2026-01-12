@@ -4,87 +4,109 @@ const currentPath = Astro.url.pathname;
 
 // Environment-aware URL configuration
 const isDev = import.meta.env.DEV;
-const backendURL = isDev ? 'http://localhost:8080' : (import.meta.env.BACKEND_URL || 'https://api.compify.com');
-const sandboxURL = isDev ? 'http://localhost:5173' : (import.meta.env.SANDBOX_URL || 'https://sandbox.compify.com');
+
+// In development, backend routes are proxied by Vite to localhost:8080
+// In production, backend routes are proxied by Cloudflare Pages via _redirects
+const authItems = [
+  { href: '/login', label: 'Login', class: 'btn btn-outline' },
+  { href: '/register', label: 'Register', class: 'btn btn-primary' },
+  { href: '/dashboard', label: 'Dashboard', class: 'btn btn-secondary' },
+];
+
+// Sandbox URL: in development it's a separate server, in production it's served statically
+const getSandboxURL = () => isDev ? 'http://localhost:5173' : '/sandbox';
 
 const navItems = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About' },
-  { href: '/rules', label: 'Rules' },
-  { href: '/timeline', label: 'Timeline' },
-  { href: '/sponsors', label: 'Sponsors' },
-  { href: '/faq', label: 'FAQ' },
-  { href: sandboxURL, label: 'Play Games', external: true },
+  { href: '/about/', label: 'About' },
+  { href: '/rules/', label: 'Rules' },
+  { href: '/timeline/', label: 'Timeline' },
+  { href: '/sponsors/', label: 'Sponsors' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: getSandboxURL(), label: 'Play Games' },
 ];
 ---
 
 <header class="header">
-  <nav class="nav">
-    <div class="nav-container">
-      <a href="/" class="logo">
+  <div class="container">
+    <div class="header-content">
+      <a href="/" class="text-2xl font-bold text-primary logo-link">
         <span class="logo-text">Compify</span>
       </a>
       
-      <ul class="nav-menu">
-        {navItems.map(({ href, label, external }) => (
-          <li class="nav-item">
-            <a 
-              href={href} 
-              class={`nav-link ${currentPath === href ? 'active' : ''}`}
-              aria-current={currentPath === href ? 'page' : undefined}
-              target={external ? '_blank' : undefined}
-              rel={external ? 'noopener noreferrer' : undefined}
-            >
-              {label}
-            </a>
-          </li>
+      <nav class="nav nav-horizontal hidden md:flex">
+        {navItems.map(({ href, label }) => (
+          <a 
+            href={href} 
+            class={`nav-link ${currentPath === href ? 'active' : ''}`}
+            aria-current={currentPath === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
         ))}
-      </ul>
+      </nav>
       
-      <div class="nav-actions">
-        <a href={`${backendURL}/login`} class="btn btn-outline">Login</a>
-        <a href={`${backendURL}/register`} class="btn btn-primary">Register</a>
-        <a href={`${backendURL}/dashboard`} class="btn btn-secondary">Dashboard</a>
+      <div class="flex items-center gap-3 hidden md:flex">
+        {authItems.map(({ href, label, class: className }) => (
+          <a href={href} class={className}>
+            {label}
+          </a>
+        ))}
       </div>
       
       <!-- Mobile menu button -->
-      <button class="mobile-menu-btn" aria-label="Toggle navigation menu">
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
-        <span class="hamburger"></span>
+      <button class="md:hidden btn btn-ghost" aria-label="Toggle navigation menu" id="mobile-menu-btn">
+        <span class="block w-6 h-0.5 bg-current mb-1"></span>
+        <span class="block w-6 h-0.5 bg-current mb-1"></span>
+        <span class="block w-6 h-0.5 bg-current"></span>
       </button>
     </div>
-  </nav>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <nav class="nav nav-vertical py-4 border-t border-gray-200">
+        {navItems.map(({ href, label }) => (
+          <a 
+            href={href} 
+            class={`nav-link ${currentPath === href ? 'active' : ''}`}
+            aria-current={currentPath === href ? 'page' : undefined}
+          >
+            {label}
+          </a>
+        ))}
+        <div class="divider my-4"></div>
+        {authItems.map(({ href, label, class: className }) => (
+          <a href={href} class={`${className} mb-2`}>
+            {label}
+          </a>
+        ))}
+      </nav>
+    </div>
+  </div>
 </header>
 
+<script>
+  // Simple mobile menu toggle using design system classes
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
+
 <style>
-  .header {
-    background: #fff;
-    border-bottom: 1px solid #e5e7eb;
-    position: sticky;
-    top: 0;
-    z-index: 50;
+  /* Logo styling */
+  .logo-link {
+    text-decoration: none !important;
   }
   
-  .nav {
-    width: 100%;
-  }
-  
-  .nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 4rem;
-  }
-  
-  .logo {
-    text-decoration: none;
-    color: #1e40af;
-    font-weight: bold;
-    font-size: 1.5rem;
+  .logo-link:hover {
+    text-decoration: none !important;
   }
   
   .logo-text {
@@ -92,160 +114,6 @@ const navItems = [
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-  }
-  
-  .nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .nav-link {
-    text-decoration: none;
-    color: #6b7280;
-    font-weight: 500;
-    padding: 0.5rem 0;
-    transition: color 0.2s ease;
-    position: relative;
-  }
-  
-  .nav-link:hover,
-  .nav-link.active {
-    color: #1e40af;
-  }
-  
-  .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -1px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: #1e40af;
-  }
-  
-  .nav-actions {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-  }
-  
-  .btn {
-    padding: 0.5rem 1rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-  }
-  
-  .btn-outline {
-    color: #1e40af;
-    border-color: #1e40af;
-    background: transparent;
-  }
-  
-  .btn-outline:hover {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  .btn-secondary {
-    background: #6b7280;
-    color: white;
-  }
-  
-  .btn-secondary:hover {
-    background: #4b5563;
-  }
-  
-  .mobile-menu-btn {
-    display: none;
-    flex-direction: column;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-    gap: 0.25rem;
-  }
-  
-  .hamburger {
-    width: 1.5rem;
-    height: 2px;
-    background: #374151;
-    transition: all 0.3s ease;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .nav-menu {
-      display: none;
-    }
-    
-    .nav-actions {
-      display: none;
-    }
-    
-    .mobile-menu-btn {
-      display: flex;
-    }
-  }
-  
-  /* Accessibility */
-  @media (prefers-reduced-motion: reduce) {
-    .nav-link,
-    .btn,
-    .hamburger {
-      transition: none;
-    }
+    color: #1e40af; /* fallback for browsers that don't support background-clip */
   }
 </style>
-
-<script>
-  // Simple mobile menu toggle (minimal JavaScript as per requirements)
-  document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('.nav-menu');
-    const navActions = document.querySelector('.nav-actions');
-    
-    if (mobileMenuBtn && navMenu && navActions) {
-      mobileMenuBtn.addEventListener('click', () => {
-        const isOpen = navMenu.style.display === 'flex';
-        navMenu.style.display = isOpen ? 'none' : 'flex';
-        navActions.style.display = isOpen ? 'none' : 'flex';
-        
-        if (!isOpen) {
-          navMenu.style.flexDirection = 'column';
-          navMenu.style.position = 'absolute';
-          navMenu.style.top = '100%';
-          navMenu.style.left = '0';
-          navMenu.style.right = '0';
-          navMenu.style.background = 'white';
-          navMenu.style.padding = '1rem';
-          navMenu.style.borderTop = '1px solid #e5e7eb';
-          
-          navActions.style.flexDirection = 'column';
-          navActions.style.position = 'absolute';
-          navActions.style.top = 'calc(100% + 200px)';
-          navActions.style.left = '0';
-          navActions.style.right = '0';
-          navActions.style.background = 'white';
-          navActions.style.padding = '1rem';
-          navActions.style.borderTop = '1px solid #e5e7eb';
-        }
-      });
-    }
-  });
-</script>

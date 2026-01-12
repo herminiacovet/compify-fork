@@ -11,6 +11,39 @@ export default defineConfig({
   },
   compressHTML: true,
   vite: {
+    server: {
+      port: 4321, // Force specific port
+      proxy: {
+        // Proxy backend page routes to backend in development
+        '/login': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+        },
+        '/register': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+        },
+        '/dashboard': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+        },
+        // Proxy auth form submission routes to backend in development
+        '/auth': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+        },
+        // Proxy API routes to backend in development
+        '/api': {
+          target: 'http://localhost:8080',
+          changeOrigin: true,
+          secure: false,
+        },
+      },
+    },
     build: {
       cssMinify: true,
       minify: 'esbuild',

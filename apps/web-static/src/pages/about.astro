@@ -9,293 +9,104 @@ import Navigation from '../components/Navigation.astro';
 >
   <Navigation slot="header" />
   
-  <section class="hero-section">
+  <section class="hero">
     <div class="container">
-      <h1 class="page-title">About Compify</h1>
-      <p class="page-subtitle">
-        Empowering developers through competitive programming and interactive challenges
-      </p>
+      <div class="text-center py-12">
+        <h1 class="text-4xl font-bold mb-4 text-hero-primary">About Compify</h1>
+        <p class="text-xl max-w-2xl mx-auto text-hero-secondary">
+          Empowering developers through competitive programming and interactive challenges
+        </p>
+      </div>
     </div>
   </section>
   
-  <section class="content-section">
+  <section class="section">
     <div class="container">
-      <div class="content-grid">
-        <div class="content-main">
-          <h2>Our Mission</h2>
-          <p>
+      <div class="grid lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-semibold mb-6 text-primary">Our Mission</h2>
+          <p class="mb-6 text-secondary">
             Compify was created to bridge the gap between learning to code and applying those skills 
             in real-world scenarios. We believe that competitive programming not only sharpens 
             technical abilities but also fosters problem-solving skills, creativity, and resilience.
           </p>
           
-          <h2>What We Offer</h2>
-          <ul class="feature-list">
-            <li>
-              <strong>Competitive Programming Challenges:</strong> 
-              Algorithm-based problems ranging from beginner to expert level
+          <h2 class="text-3xl font-semibold mb-6 text-primary">What We Offer</h2>
+          <ul class="mb-6 space-y-4">
+            <li class="pb-4 border-b border-gray-200">
+              <strong class="text-primary">Competitive Programming Challenges:</strong> 
+              <span class="text-secondary">Algorithm-based problems ranging from beginner to expert level</span>
             </li>
-            <li>
-              <strong>Real-time Competitions:</strong> 
-              Live coding contests with leaderboards and rankings
+            <li class="pb-4 border-b border-gray-200">
+              <strong class="text-primary">Real-time Competitions:</strong> 
+              <span class="text-secondary">Live coding contests with leaderboards and rankings</span>
             </li>
-            <li>
-              <strong>Interactive Learning:</strong> 
-              Mini-games and sandbox environments to practice coding concepts
+            <li class="pb-4 border-b border-gray-200">
+              <strong class="text-primary">Interactive Learning:</strong> 
+              <span class="text-secondary">Mini-games and sandbox environments to practice coding concepts</span>
             </li>
-            <li>
-              <strong>Community Driven:</strong> 
-              Connect with fellow developers and learn from each other
+            <li class="pb-4">
+              <strong class="text-primary">Community Driven:</strong> 
+              <span class="text-secondary">Connect with fellow developers and learn from each other</span>
             </li>
           </ul>
           
-          <h2>Our Vision</h2>
-          <p>
+          <h2 class="text-3xl font-semibold mb-6 text-primary">Our Vision</h2>
+          <p class="mb-6 text-secondary">
             We envision a world where every developer has access to engaging, challenging, 
             and educational programming experiences. Through Compify, we aim to create a 
             global community of passionate programmers who push each other to excel.
           </p>
           
-          <h2>Join the Community</h2>
-          <p>
+          <h2 class="text-3xl font-semibold mb-6 text-primary">Join the Community</h2>
+          <p class="mb-8 text-secondary">
             Whether you're a beginner looking to improve your skills or an experienced 
             developer seeking new challenges, Compify has something for everyone. 
             Join thousands of developers who are already part of our growing community.
           </p>
           
-          <div class="cta-section">
-            <a href="/register" class="btn btn-primary btn-large">Start Your Journey</a>
-            <a href="/rules" class="btn btn-outline btn-large">View Competition Rules</a>
+          <div class="flex gap-4 flex-wrap">
+            <a href="/auth/register" class="btn btn-primary btn-lg">Start Your Journey</a>
+            <a href="/rules/" class="btn btn-outline btn-lg">View Competition Rules</a>
           </div>
         </div>
         
-        <aside class="sidebar">
-          <div class="stats-card">
-            <h3>Platform Stats</h3>
-            <div class="stat-item">
-              <span class="stat-number">10,000+</span>
-              <span class="stat-label">Active Developers</span>
+        <aside class="space-y-6">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Platform Stats</h3>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">500+</span>
-              <span class="stat-label">Challenges Available</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">50+</span>
-              <span class="stat-label">Countries Represented</span>
+            <div class="card-body space-y-4">
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">10,000+</div>
+                <div class="text-sm text-tertiary">Active Developers</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">500+</div>
+                <div class="text-sm text-tertiary">Challenges Available</div>
+              </div>
+              <div class="text-center">
+                <div class="text-3xl font-bold text-primary">50+</div>
+                <div class="text-sm text-tertiary">Countries Represented</div>
+              </div>
             </div>
           </div>
           
-          <div class="info-card">
-            <h3>Quick Links</h3>
-            <ul class="quick-links">
-              <li><a href="/rules">Competition Rules</a></li>
-              <li><a href="/timeline">Event Timeline</a></li>
-              <li><a href="/sponsors">Our Sponsors</a></li>
-              <li><a href="/faq">Frequently Asked Questions</a></li>
-            </ul>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Quick Links</h3>
+            </div>
+            <div class="card-body">
+              <nav class="nav nav-vertical">
+                <a href="/rules/" class="nav-link">Competition Rules</a>
+                <a href="/timeline/" class="nav-link">Event Timeline</a>
+                <a href="/sponsors/" class="nav-link">Our Sponsors</a>
+                <a href="/faq/" class="nav-link">Frequently Asked Questions</a>
+              </nav>
+            </div>
           </div>
         </aside>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero-section {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .page-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .content-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  
-  .content-main h2 {
-    color: #1e40af;
-    font-size: 1.75rem;
-    margin: 2rem 0 1rem 0;
-  }
-  
-  .content-main h2:first-child {
-    margin-top: 0;
-  }
-  
-  .content-main p {
-    color: #4b5563;
-    line-height: 1.7;
-    margin-bottom: 1.5rem;
-  }
-  
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem 0;
-  }
-  
-  .feature-list li {
-    padding: 1rem 0;
-    border-bottom: 1px solid #e5e7eb;
-    color: #4b5563;
-    line-height: 1.6;
-  }
-  
-  .feature-list li:last-child {
-    border-bottom: none;
-  }
-  
-  .feature-list strong {
-    color: #1e40af;
-  }
-  
-  .cta-section {
-    margin-top: 3rem;
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  
-  .stats-card,
-  .info-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .stats-card h3,
-  .info-card h3 {
-    color: #1e40af;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .stat-item {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1rem;
-  }
-  
-  .stat-number {
-    font-size: 2rem;
-    font-weight: bold;
-    color: #1e40af;
-  }
-  
-  .stat-label {
-    color: #6b7280;
-    font-size: 0.875rem;
-  }
-  
-  .quick-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .quick-links li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .quick-links a {
-    color: #4b5563;
-    text-decoration: none;
-    transition: color 0.2s ease;
-  }
-  
-  .quick-links a:hover {
-    color: #1e40af;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-  }
-  
-  .btn-large {
-    padding: 0.875rem 2rem;
-    font-size: 1.125rem;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  .btn-outline {
-    color: #1e40af;
-    border-color: #1e40af;
-    background: transparent;
-  }
-  
-  .btn-outline:hover {
-    background: #1e40af;
-    color: white;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: 2rem;
-    }
-    
-    .content-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .cta-section {
-      flex-direction: column;
-    }
-    
-    .btn-large {
-      width: 100%;
-      text-align: center;
-    }
-  }
-</style>

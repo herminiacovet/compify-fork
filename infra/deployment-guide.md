@@ -1,14 +1,44 @@
 # Compify MVP Deployment Guide
 
-This guide provides step-by-step instructions for deploying the Compify MVP to production environments.
+This guide provides step-by-step instructions for deploying the Compify MVP with a centralized design system and optimized routing.
 
 ## Overview
 
-The Compify MVP consists of three independently deployable applications:
+The Compify MVP consists of three independently deployable applications with a shared design system:
 
 1. **Static Site** - Astro-based marketing site (Cloudflare Pages)
-2. **Backend Server** - Go HTTP server (Render/Leapcell)
+2. **Backend Server** - Go HTTP server with server-driven UI (Render/Leapcell)  
 3. **Game Sandbox** - Phaser.js games (CDN/Static hosting)
+4. **Design System** - Shared CSS framework for consistent UI/UX
+
+## Architecture & Routing Strategy
+
+### Domain Structure
+```
+compify.pages.dev/              # Static marketing site
+├── /                          # Home page
+├── /about/                    # About page
+├── /rules/                    # Competition rules
+├── /timeline/                 # Competition timeline
+├── /sponsors/                 # Sponsors page
+├── /faq/                      # FAQ page
+├── /sandbox/                  # Game sandbox (proxied)
+└── /auth/                     # Authentication (proxied to backend)
+    ├── /login
+    ├── /register
+    └── /dashboard
+
+compify-api.onrender.com/       # Backend server
+├── /auth/                     # Authentication endpoints
+├── /api/                      # API endpoints
+└── /health                    # Health check
+```
+
+### Design System Integration
+All applications use the shared design system located in `shared/design-system/`:
+- **Static Site**: Imports CSS files directly
+- **Backend**: Serves CSS files as static assets
+- **Sandbox**: Links to CSS files via relative paths
 
 ## Prerequisites
 

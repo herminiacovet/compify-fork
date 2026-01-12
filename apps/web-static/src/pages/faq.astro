@@ -9,631 +9,263 @@ import Navigation from '../components/Navigation.astro';
 >
   <Navigation slot="header" />
   
-  <section class="hero-section">
+  <section class="hero">
     <div class="container">
-      <h1 class="page-title">Frequently Asked Questions</h1>
-      <p class="page-subtitle">
-        Find answers to common questions about Compify competitions
-      </p>
+      <div class="text-center py-16">
+        <h1 class="text-4xl font-bold mb-6 text-hero-primary">Frequently Asked Questions</h1>
+        <p class="text-xl max-w-2xl mx-auto text-hero-secondary">
+          Find answers to common questions about Compify competitions
+        </p>
+      </div>
     </div>
   </section>
   
-  <section class="content-section">
+  <section class="section">
     <div class="container">
-      <div class="faq-content">
-        <div class="faq-categories">
-          <h2>Quick Navigation</h2>
-          <ul class="category-list">
-            <li><a href="#general">General Questions</a></li>
-            <li><a href="#registration">Registration & Account</a></li>
-            <li><a href="#competition">Competition Format</a></li>
-            <li><a href="#technical">Technical Requirements</a></li>
-            <li><a href="#scoring">Scoring & Results</a></li>
-            <li><a href="#support">Support & Contact</a></li>
-          </ul>
-        </div>
-        
-        <div class="faq-main">
-          <!-- General Questions -->
-          <section id="general" class="faq-section">
-            <h2>General Questions</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What is Compify?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Compify is a competitive programming platform that hosts coding competitions, 
-                  challenges, and mini-games for developers of all skill levels. We provide 
-                  a comprehensive environment for learning, practicing, and competing in 
-                  algorithmic problem-solving.
-                </p>
-              </div>
+      <div class="grid lg:grid-cols-4 gap-8">
+        <aside class="lg:col-span-1">
+          <div class="card sticky top-8">
+            <div class="card-header">
+              <h2 class="card-title text-lg">Quick Navigation</h2>
             </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Who can participate in Compify competitions?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Anyone aged 13 or older can participate in Compify competitions. We welcome 
-                  developers of all skill levels, from beginners to experts. Minors require 
-                  parental consent to participate.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Are Compify competitions free to enter?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Yes! All Compify competitions are completely free to enter. We believe in 
-                  making competitive programming accessible to everyone, regardless of 
-                  financial circumstances.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Registration & Account -->
-          <section id="registration" class="faq-section">
-            <h2>Registration & Account</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>How do I create a Compify account?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Click the "Register" button in the top navigation, fill out the registration 
-                  form with your email and basic information, then verify your email address. 
-                  Once verified, you can immediately start participating in competitions.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Can I change my username after registration?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Currently, usernames cannot be changed after registration to maintain 
-                  consistency in leaderboards and competition history. Please choose your 
-                  username carefully during registration.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What if I forget my password?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Use the "Forgot Password" link on the login page. Enter your email address, 
-                  and we'll send you a secure reset link. Follow the instructions in the email 
-                  to create a new password.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Competition Format -->
-          <section id="competition" class="faq-section">
-            <h2>Competition Format</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>How long do competitions typically last?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Standard competitions run for 2-4 hours, while marathon competitions can 
-                  last 24-48 hours. The exact duration is specified when you register for 
-                  each competition. Practice rounds are usually shorter, around 1-2 hours.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What types of problems can I expect?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Problems range from basic algorithmic challenges to complex optimization 
-                  tasks. Common categories include dynamic programming, graph algorithms, 
-                  string processing, mathematical problems, and data structure implementation.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Can I participate in team competitions?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Most competitions are individual, but we occasionally host team events. 
-                  Team competitions will be clearly marked, and you'll be able to form 
-                  teams during registration. Check the competition details for format information.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Technical Requirements -->
-          <section id="technical" class="faq-section">
-            <h2>Technical Requirements</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What programming languages are supported?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  We support Python 3.x, Java 11+, C++ 17, JavaScript (Node.js), Go 1.19+, 
-                  and Rust (latest stable). Each competition will specify which languages 
-                  are available for that particular event.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What are the system requirements?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  You need a modern web browser (Chrome, Firefox, Safari, or Edge), stable 
-                  internet connection, and the ability to write and submit code through our 
-                  web interface. No special software installation is required.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Can I use external libraries or frameworks?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Generally, only standard libraries are allowed. Each competition will 
-                  specify which external libraries (if any) are permitted. Most competitions 
-                  focus on algorithmic problem-solving using built-in language features.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Scoring & Results -->
-          <section id="scoring" class="faq-section">
-            <h2>Scoring & Results</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>How is scoring calculated?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Scoring is based on problem difficulty, solution correctness, and submission 
-                  time. Correct solutions earn full points, partial solutions may earn partial 
-                  credit, and time penalties apply for incorrect submissions. Earlier correct 
-                  submissions rank higher than later ones.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>When are results announced?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Preliminary results are usually available immediately after the competition 
-                  ends. Final results, including detailed explanations and winner announcements, 
-                  are published within one week of the competition.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>What prizes are available?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  Prizes vary by competition but typically include certificates, recognition 
-                  on our leaderboard, and sometimes sponsored prizes like course licenses, 
-                  books, or development tools. All prizes are clearly listed before registration.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <!-- Support & Contact -->
-          <section id="support" class="faq-section">
-            <h2>Support & Contact</h2>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>How can I get help during a competition?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  For technical issues during competitions, use the "Help" button in the 
-                  competition interface. For clarifications about problem statements, 
-                  use the built-in question system. Our support team monitors competitions 
-                  in real-time.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>Who can I contact for general questions?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  For general questions, email us at <a href="mailto:support@compify.com">support@compify.com</a>. 
-                  For sponsorship inquiries, contact <a href="mailto:sponsors@compify.com">sponsors@compify.com</a>. 
-                  We typically respond within 24 hours.
-                </p>
-              </div>
-            </div>
-            
-            <div class="faq-item">
-              <button class="faq-question" aria-expanded="false">
-                <span>How can I report a bug or suggest a feature?</span>
-                <span class="faq-icon">+</span>
-              </button>
-              <div class="faq-answer">
-                <p>
-                  We welcome feedback! Report bugs or suggest features by emailing 
-                  <a href="mailto:feedback@compify.com">feedback@compify.com</a> with detailed 
-                  information. Include screenshots for bugs and clear descriptions for feature requests.
-                </p>
-              </div>
-            </div>
-          </section>
-          
-          <div class="faq-footer">
-            <h3>Still have questions?</h3>
-            <p>
-              If you couldn't find the answer you're looking for, don't hesitate to reach out. 
-              Our support team is here to help!
-            </p>
-            <div class="contact-actions">
-              <a href="mailto:support@compify.com" class="btn btn-primary">Contact Support</a>
-              <a href="/rules" class="btn btn-outline">View Rules</a>
+            <div class="card-body">
+              <nav class="nav nav-vertical">
+                <a href="#general" class="nav-link">General Questions</a>
+                <a href="#registration" class="nav-link">Registration & Account</a>
+                <a href="#competition" class="nav-link">Competition Format</a>
+                <a href="#technical" class="nav-link">Technical Requirements</a>
+                <a href="#scoring" class="nav-link">Scoring & Results</a>
+                <a href="#support" class="nav-link">Support & Contact</a>
+              </nav>
             </div>
           </div>
-        </div>
+        </aside>
+        
+        <main class="lg:col-span-3">
+          <div class="card">
+            <div class="card-body space-y-8">
+              <!-- General Questions -->
+              <section id="general">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">General Questions</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">What is Compify?</div>
+                    <div class="alert-description">
+                      Compify is a competitive programming platform that hosts coding competitions, 
+                      challenges, and mini-games for developers of all skill levels. We provide 
+                      a comprehensive environment for learning, practicing, and competing in 
+                      algorithmic problem-solving.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">Who can participate in Compify competitions?</div>
+                    <div class="alert-description">
+                      Anyone aged 13 or older can participate in Compify competitions. We welcome 
+                      developers of all skill levels, from beginners to experts. Minors require 
+                      parental consent to participate.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-success">
+                    <div class="alert-title">Are Compify competitions free to enter?</div>
+                    <div class="alert-description">
+                      Yes! All Compify competitions are completely free to enter. We believe in 
+                      making competitive programming accessible to everyone, regardless of 
+                      financial circumstances.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Registration & Account -->
+              <section id="registration">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Registration & Account</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">How do I create a Compify account?</div>
+                    <div class="alert-description">
+                      Click the "Register" button in the top navigation, fill out the registration 
+                      form with your email and basic information, then verify your email address. 
+                      Once verified, you can immediately start participating in competitions.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-warning">
+                    <div class="alert-title">Can I change my username after registration?</div>
+                    <div class="alert-description">
+                      Currently, usernames cannot be changed after registration to maintain 
+                      consistency in leaderboards and competition history. Please choose your 
+                      username carefully during registration.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">What if I forget my password?</div>
+                    <div class="alert-description">
+                      Use the "Forgot Password" link on the login page. Enter your email address, 
+                      and we'll send you a secure reset link. Follow the instructions in the email 
+                      to create a new password.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Competition Format -->
+              <section id="competition">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Competition Format</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">How long do competitions typically last?</div>
+                    <div class="alert-description">
+                      Standard competitions run for 2-4 hours, while marathon competitions can 
+                      last 24-48 hours. The exact duration is specified when you register for 
+                      each competition. Practice rounds are usually shorter, around 1-2 hours.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">What types of problems can I expect?</div>
+                    <div class="alert-description">
+                      Problems range from basic algorithmic challenges to complex optimization 
+                      tasks. Common categories include dynamic programming, graph algorithms, 
+                      string processing, mathematical problems, and data structure implementation.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">Can I participate in team competitions?</div>
+                    <div class="alert-description">
+                      Most competitions are individual, but we occasionally host team events. 
+                      Team competitions will be clearly marked, and you'll be able to form 
+                      teams during registration. Check the competition details for format information.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Technical Requirements -->
+              <section id="technical">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Technical Requirements</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">What programming languages are supported?</div>
+                    <div class="alert-description">
+                      We support Python 3.x, Java 11+, C++ 17, JavaScript (Node.js), Go 1.19+, 
+                      and Rust (latest stable). Each competition will specify which languages 
+                      are available for that particular event.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">What are the system requirements?</div>
+                    <div class="alert-description">
+                      You need a modern web browser (Chrome, Firefox, Safari, or Edge), stable 
+                      internet connection, and the ability to write and submit code through our 
+                      web interface. No special software installation is required.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-warning">
+                    <div class="alert-title">Can I use external libraries or frameworks?</div>
+                    <div class="alert-description">
+                      Generally, only standard libraries are allowed. Each competition will 
+                      specify which external libraries (if any) are permitted. Most competitions 
+                      focus on algorithmic problem-solving using built-in language features.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Scoring & Results -->
+              <section id="scoring">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Scoring & Results</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">How is scoring calculated?</div>
+                    <div class="alert-description">
+                      Scoring is based on problem difficulty, solution correctness, and submission 
+                      time. Correct solutions earn full points, partial solutions may earn partial 
+                      credit, and time penalties apply for incorrect submissions. Earlier correct 
+                      submissions rank higher than later ones.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">When are results announced?</div>
+                    <div class="alert-description">
+                      Preliminary results are usually available immediately after the competition 
+                      ends. Final results, including detailed explanations and winner announcements, 
+                      are published within one week of the competition.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-success">
+                    <div class="alert-title">What prizes are available?</div>
+                    <div class="alert-description">
+                      Prizes vary by competition but typically include certificates, recognition 
+                      on our leaderboard, and sometimes sponsored prizes like course licenses, 
+                      books, or development tools. All prizes are clearly listed before registration.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <!-- Support & Contact -->
+              <section id="support">
+                <h2 class="text-2xl font-semibold mb-6 text-primary">Support & Contact</h2>
+                
+                <div class="space-y-4">
+                  <div class="alert alert-info">
+                    <div class="alert-title">How can I get help during a competition?</div>
+                    <div class="alert-description">
+                      For technical issues during competitions, use the "Help" button in the 
+                      competition interface. For clarifications about problem statements, 
+                      use the built-in question system. Our support team monitors competitions 
+                      in real-time.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info">
+                    <div class="alert-title">Who can I contact for general questions?</div>
+                    <div class="alert-description">
+                      For general questions, email us at <a href="mailto:support@compify.com" class="text-link no-underline">support@compify.com</a>. 
+                      For sponsorship inquiries, contact <a href="mailto:sponsors@compify.com" class="text-link no-underline">sponsors@compify.com</a>. 
+                      We typically respond within 24 hours.
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-success">
+                    <div class="alert-title">How can I report a bug or suggest a feature?</div>
+                    <div class="alert-description">
+                      We welcome feedback! Report bugs or suggest features by emailing 
+                      <a href="mailto:feedback@compify.com" class="text-link no-underline">feedback@compify.com</a> with detailed 
+                      information. Include screenshots for bugs and clear descriptions for feature requests.
+                    </div>
+                  </div>
+                </div>
+              </section>
+              
+              <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <h3 class="text-xl font-semibold mb-4 text-primary">Still have questions?</h3>
+                <p class="mb-6 text-secondary">
+                  If you couldn't find the answer you're looking for, don't hesitate to reach out. 
+                  Our support team is here to help!
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                  <a href="mailto:support@compify.com" class="btn btn-primary">Contact Support</a>
+                  <a href="/rules/" class="btn btn-outline">View Rules</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero-section {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .page-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .faq-content {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  
-  .faq-categories {
-    position: sticky;
-    top: 2rem;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  .faq-categories h2 {
-    color: #1e40af;
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .category-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .category-list li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .category-list a {
-    color: #4b5563;
-    text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s ease;
-  }
-  
-  .category-list a:hover {
-    color: #1e40af;
-  }
-  
-  .faq-main {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-  }
-  
-  .faq-section {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .faq-section:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-  
-  .faq-section h2 {
-    color: #1e40af;
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 600;
-  }
-  
-  .faq-item {
-    margin-bottom: 1rem;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    overflow: hidden;
-  }
-  
-  .faq-question {
-    width: 100%;
-    background: #f9fafb;
-    border: none;
-    padding: 1rem 1.5rem;
-    text-align: left;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 500;
-    color: #374151;
-    transition: background-color 0.2s ease;
-  }
-  
-  .faq-question:hover {
-    background: #f3f4f6;
-  }
-  
-  .faq-question[aria-expanded="true"] {
-    background: #e0e7ff;
-    color: #1e40af;
-  }
-  
-  .faq-icon {
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #1e40af;
-    transition: transform 0.2s ease;
-  }
-  
-  .faq-question[aria-expanded="true"] .faq-icon {
-    transform: rotate(45deg);
-  }
-  
-  .faq-answer {
-    padding: 0 1.5rem;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease, padding 0.3s ease;
-  }
-  
-  .faq-answer.open {
-    padding: 1rem 1.5rem;
-    max-height: 500px;
-  }
-  
-  .faq-answer p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin: 0;
-  }
-  
-  .faq-answer a {
-    color: #1e40af;
-    text-decoration: none;
-  }
-  
-  .faq-answer a:hover {
-    text-decoration: underline;
-  }
-  
-  .faq-footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid #e5e7eb;
-    text-align: center;
-  }
-  
-  .faq-footer h3 {
-    color: #1e40af;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .faq-footer p {
-    color: #6b7280;
-    margin-bottom: 2rem;
-  }
-  
-  .contact-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  .btn-outline {
-    color: #1e40af;
-    border-color: #1e40af;
-    background: transparent;
-  }
-  
-  .btn-outline:hover {
-    background: #1e40af;
-    color: white;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: 2rem;
-    }
-    
-    .faq-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .faq-categories {
-      position: static;
-      order: 2;
-    }
-    
-    .faq-main {
-      order: 1;
-    }
-    
-    .contact-actions {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .btn {
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-  }
-  
-  /* Smooth scrolling for anchor links */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Highlight target sections */
-  .faq-section:target {
-    background: #fef3c7;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin: -1rem;
-    transition: background-color 0.3s ease;
-  }
-</style>
-
-<script>
-  // FAQ accordion functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-      question.addEventListener('click', () => {
-        const isExpanded = question.getAttribute('aria-expanded') === 'true';
-        const answer = question.nextElementSibling;
-        
-        // Close all other FAQ items
-        faqQuestions.forEach(otherQuestion => {
-          if (otherQuestion !== question) {
-            otherQuestion.setAttribute('aria-expanded', 'false');
-            const otherAnswer = otherQuestion.nextElementSibling;
-            otherAnswer.classList.remove('open');
-          }
-        });
-        
-        // Toggle current FAQ item
-        question.setAttribute('aria-expanded', !isExpanded);
-        if (!isExpanded) {
-          answer.classList.add('open');
-        } else {
-          answer.classList.remove('open');
-        }
-      });
-    });
-  });
-</script>

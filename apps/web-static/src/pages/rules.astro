@@ -9,177 +9,199 @@ import Navigation from '../components/Navigation.astro';
 >
   <Navigation slot="header" />
   
-  <section class="hero-section">
+  <section class="hero">
     <div class="container">
-      <h1 class="page-title">Competition Rules</h1>
-      <p class="page-subtitle">
-        Official guidelines and regulations for all Compify competitions
-      </p>
+      <div class="text-center py-12">
+        <h1 class="text-4xl font-bold mb-4 text-hero-primary">Competition Rules</h1>
+        <p class="text-xl max-w-2xl mx-auto text-hero-secondary">
+          Official guidelines and regulations for all Compify competitions
+        </p>
+      </div>
     </div>
   </section>
   
-  <section class="content-section">
+  <section class="section">
     <div class="container">
-      <div class="rules-content">
-        <nav class="table-of-contents">
-          <h2>Table of Contents</h2>
-          <ul>
-            <li><a href="#eligibility">Eligibility Requirements</a></li>
-            <li><a href="#registration">Registration Process</a></li>
-            <li><a href="#competition-format">Competition Format</a></li>
-            <li><a href="#submission-guidelines">Submission Guidelines</a></li>
-            <li><a href="#judging-criteria">Judging Criteria</a></li>
-            <li><a href="#code-of-conduct">Code of Conduct</a></li>
-            <li><a href="#prizes">Prizes and Recognition</a></li>
-            <li><a href="#disqualification">Disqualification</a></li>
-          </ul>
-        </nav>
+      <div class="grid lg:grid-cols-4 gap-8">
+        <aside class="lg:col-span-1">
+          <div class="card sticky top-8">
+            <div class="card-header">
+              <h2 class="card-title text-lg">Table of Contents</h2>
+            </div>
+            <div class="card-body">
+              <nav class="nav nav-vertical">
+                <a href="#eligibility" class="nav-link">Eligibility Requirements</a>
+                <a href="#registration" class="nav-link">Registration Process</a>
+                <a href="#competition-format" class="nav-link">Competition Format</a>
+                <a href="#submission-guidelines" class="nav-link">Submission Guidelines</a>
+                <a href="#judging-criteria" class="nav-link">Judging Criteria</a>
+                <a href="#code-of-conduct" class="nav-link">Code of Conduct</a>
+                <a href="#prizes" class="nav-link">Prizes and Recognition</a>
+                <a href="#disqualification" class="nav-link">Disqualification</a>
+              </nav>
+            </div>
+          </div>
+        </aside>
         
-        <main class="rules-main">
-          <section id="eligibility" class="rule-section">
-            <h2>1. Eligibility Requirements</h2>
-            <ul>
-              <li>Open to developers of all skill levels worldwide</li>
-              <li>Participants must be at least 13 years old</li>
-              <li>Minors require parental consent for participation</li>
-              <li>One account per person - multiple accounts will result in disqualification</li>
-              <li>Current and former employees of Compify are not eligible for prizes</li>
-            </ul>
-          </section>
-          
-          <section id="registration" class="rule-section">
-            <h2>2. Registration Process</h2>
-            <ul>
-              <li>Create a free Compify account with valid email address</li>
-              <li>Complete your profile with accurate information</li>
-              <li>Register for specific competitions before the deadline</li>
-              <li>Confirm participation via email verification</li>
-              <li>Late registrations will not be accepted</li>
-            </ul>
-          </section>
-          
-          <section id="competition-format" class="rule-section">
-            <h2>3. Competition Format</h2>
-            <h3>Contest Duration</h3>
-            <ul>
-              <li>Standard competitions run for 2-4 hours</li>
-              <li>Marathon competitions may run for 24-48 hours</li>
-              <li>All times are displayed in UTC</li>
-            </ul>
-            
-            <h3>Problem Types</h3>
-            <ul>
-              <li>Algorithmic problem solving</li>
-              <li>Data structure implementation</li>
-              <li>Optimization challenges</li>
-              <li>Real-world application problems</li>
-            </ul>
-            
-            <h3>Scoring System</h3>
-            <ul>
-              <li>Points awarded based on problem difficulty and solution time</li>
-              <li>Partial credit may be given for incomplete solutions</li>
-              <li>Time penalties apply for incorrect submissions</li>
-              <li>Final ranking determined by total points and submission time</li>
-            </ul>
-          </section>
-          
-          <section id="submission-guidelines" class="rule-section">
-            <h2>4. Submission Guidelines</h2>
-            <h3>Supported Languages</h3>
-            <ul>
-              <li>Python 3.x</li>
-              <li>Java 11+</li>
-              <li>C++ 17</li>
-              <li>JavaScript (Node.js)</li>
-              <li>Go 1.19+</li>
-              <li>Rust (latest stable)</li>
-            </ul>
-            
-            <h3>Code Requirements</h3>
-            <ul>
-              <li>Solutions must be original work</li>
-              <li>Code must compile and run without errors</li>
-              <li>Maximum file size: 64KB per submission</li>
-              <li>No external libraries unless explicitly allowed</li>
-              <li>Comments are encouraged but not required</li>
-            </ul>
-            
-            <h3>Testing</h3>
-            <ul>
-              <li>Solutions tested against multiple test cases</li>
-              <li>Sample test cases provided for each problem</li>
-              <li>Hidden test cases used for final evaluation</li>
-              <li>Time and memory limits strictly enforced</li>
-            </ul>
-          </section>
-          
-          <section id="judging-criteria" class="rule-section">
-            <h2>5. Judging Criteria</h2>
-            <ul>
-              <li><strong>Correctness:</strong> Solution produces correct output for all test cases</li>
-              <li><strong>Efficiency:</strong> Algorithm runs within time and memory constraints</li>
-              <li><strong>Code Quality:</strong> Clean, readable, and well-structured code</li>
-              <li><strong>Submission Time:</strong> Earlier correct submissions rank higher</li>
-              <li><strong>Penalty Points:</strong> Deducted for incorrect submissions</li>
-            </ul>
-          </section>
-          
-          <section id="code-of-conduct" class="rule-section">
-            <h2>6. Code of Conduct</h2>
-            <h3>Prohibited Actions</h3>
-            <ul>
-              <li>Plagiarism or copying solutions from others</li>
-              <li>Collaboration during individual competitions</li>
-              <li>Using unauthorized external resources</li>
-              <li>Attempting to hack or disrupt the platform</li>
-              <li>Creating multiple accounts</li>
-              <li>Harassment or inappropriate behavior</li>
-            </ul>
-            
-            <h3>Fair Play</h3>
-            <ul>
-              <li>Respect all participants and organizers</li>
-              <li>Report suspected violations to moderators</li>
-              <li>Accept decisions made by judges</li>
-              <li>Maintain the integrity of the competition</li>
-            </ul>
-          </section>
-          
-          <section id="prizes" class="rule-section">
-            <h2>7. Prizes and Recognition</h2>
-            <ul>
-              <li>Top performers receive certificates and recognition</li>
-              <li>Special prizes may be awarded for creative solutions</li>
-              <li>Winners featured on the Compify leaderboard</li>
-              <li>Prizes are non-transferable and have no cash value</li>
-              <li>Tax obligations are the responsibility of winners</li>
-            </ul>
-          </section>
-          
-          <section id="disqualification" class="rule-section">
-            <h2>8. Disqualification</h2>
-            <p>Participants may be disqualified for:</p>
-            <ul>
-              <li>Violating any competition rules</li>
-              <li>Submitting plagiarized or copied code</li>
-              <li>Inappropriate conduct or harassment</li>
-              <li>Technical violations (hacking attempts, etc.)</li>
-              <li>Providing false information during registration</li>
-            </ul>
-            <p>
-              <strong>Note:</strong> Disqualification decisions are final and not subject to appeal.
-            </p>
-          </section>
-          
-          <div class="rules-footer">
-            <p>
-              <strong>Last Updated:</strong> January 2026<br>
-              <strong>Questions?</strong> Contact us at <a href="mailto:support@compify.com">support@compify.com</a>
-            </p>
-            <div class="cta-section">
-              <a href="/register" class="btn btn-primary">Register Now</a>
-              <a href="/faq" class="btn btn-outline">View FAQ</a>
+        <main class="lg:col-span-3">
+          <div class="card">
+            <div class="card-body space-y-8">
+              <section id="eligibility">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">1. Eligibility Requirements</h2>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Open to developers of all skill levels worldwide</li>
+                  <li>• Participants must be at least 13 years old</li>
+                  <li>• Minors require parental consent for participation</li>
+                  <li>• One account per person - multiple accounts will result in disqualification</li>
+                  <li>• Current and former employees of Compify are not eligible for prizes</li>
+                </ul>
+              </section>
+              
+              <section id="registration">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">2. Registration Process</h2>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Create a free Compify account with valid email address</li>
+                  <li>• Complete your profile with accurate information</li>
+                  <li>• Register for specific competitions before the deadline</li>
+                  <li>• Confirm participation via email verification</li>
+                  <li>• Late registrations will not be accepted</li>
+                </ul>
+              </section>
+              
+              <section id="competition-format">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">3. Competition Format</h2>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Contest Duration</h3>
+                <ul class="space-y-2 mb-6 text-secondary">
+                  <li>• Standard competitions run for 2-4 hours</li>
+                  <li>• Marathon competitions may run for 24-48 hours</li>
+                  <li>• All times are displayed in UTC</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Problem Types</h3>
+                <ul class="space-y-2 mb-6 text-secondary">
+                  <li>• Algorithmic problem solving</li>
+                  <li>• Data structure implementation</li>
+                  <li>• Optimization challenges</li>
+                  <li>• Real-world application problems</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Scoring System</h3>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Points awarded based on problem difficulty and solution time</li>
+                  <li>• Partial credit may be given for incomplete solutions</li>
+                  <li>• Time penalties apply for incorrect submissions</li>
+                  <li>• Final ranking determined by total points and submission time</li>
+                </ul>
+              </section>
+              
+              <section id="submission-guidelines">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">4. Submission Guidelines</h2>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Supported Languages</h3>
+                <div class="grid md:grid-cols-2 gap-4 mb-6">
+                  <div class="space-y-2 text-secondary">
+                    <div>• Python 3.x</div>
+                    <div>• Java 11+</div>
+                    <div>• C++ 17</div>
+                  </div>
+                  <div class="space-y-2 text-secondary">
+                    <div>• JavaScript (Node.js)</div>
+                    <div>• Go 1.19+</div>
+                    <div>• Rust (latest stable)</div>
+                  </div>
+                </div>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Code Requirements</h3>
+                <ul class="space-y-2 mb-6 text-secondary">
+                  <li>• Solutions must be original work</li>
+                  <li>• Code must compile and run without errors</li>
+                  <li>• Maximum file size: 64KB per submission</li>
+                  <li>• No external libraries unless explicitly allowed</li>
+                  <li>• Comments are encouraged but not required</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Testing</h3>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Solutions tested against multiple test cases</li>
+                  <li>• Sample test cases provided for each problem</li>
+                  <li>• Hidden test cases used for final evaluation</li>
+                  <li>• Time and memory limits strictly enforced</li>
+                </ul>
+              </section>
+              
+              <section id="judging-criteria">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">5. Judging Criteria</h2>
+                <ul class="space-y-2 text-secondary">
+                  <li><strong class="text-primary">Correctness:</strong> Solution produces correct output for all test cases</li>
+                  <li><strong class="text-primary">Efficiency:</strong> Algorithm runs within time and memory constraints</li>
+                  <li><strong class="text-primary">Code Quality:</strong> Clean, readable, and well-structured code</li>
+                  <li><strong class="text-primary">Submission Time:</strong> Earlier correct submissions rank higher</li>
+                  <li><strong class="text-primary">Penalty Points:</strong> Deducted for incorrect submissions</li>
+                </ul>
+              </section>
+              
+              <section id="code-of-conduct">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">6. Code of Conduct</h2>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Prohibited Actions</h3>
+                <ul class="space-y-2 mb-6 text-secondary">
+                  <li>• Plagiarism or copying solutions from others</li>
+                  <li>• Collaboration during individual competitions</li>
+                  <li>• Using unauthorized external resources</li>
+                  <li>• Attempting to hack or disrupt the platform</li>
+                  <li>• Creating multiple accounts</li>
+                  <li>• Harassment or inappropriate behavior</li>
+                </ul>
+                
+                <h3 class="text-xl font-medium mb-3 text-primary">Fair Play</h3>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Respect all participants and organizers</li>
+                  <li>• Report suspected violations to moderators</li>
+                  <li>• Accept decisions made by judges</li>
+                  <li>• Maintain the integrity of the competition</li>
+                </ul>
+              </section>
+              
+              <section id="prizes">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">7. Prizes and Recognition</h2>
+                <ul class="space-y-2 text-secondary">
+                  <li>• Top performers receive certificates and recognition</li>
+                  <li>• Special prizes may be awarded for creative solutions</li>
+                  <li>• Winners featured on the Compify leaderboard</li>
+                  <li>• Prizes are non-transferable and have no cash value</li>
+                  <li>• Tax obligations are the responsibility of winners</li>
+                </ul>
+              </section>
+              
+              <section id="disqualification">
+                <h2 class="text-2xl font-semibold mb-4 text-primary">8. Disqualification</h2>
+                <p class="mb-4 text-secondary">Participants may be disqualified for:</p>
+                <ul class="space-y-2 mb-4 text-secondary">
+                  <li>• Violating any competition rules</li>
+                  <li>• Submitting plagiarized or copied code</li>
+                  <li>• Inappropriate conduct or harassment</li>
+                  <li>• Technical violations (hacking attempts, etc.)</li>
+                  <li>• Providing false information during registration</li>
+                </ul>
+                <div class="alert alert-warning">
+                  <div class="alert-title">Important Note</div>
+                  <div class="alert-description">
+                    Disqualification decisions are final and not subject to appeal.
+                  </div>
+                </div>
+              </section>
+              
+              <div class="mt-12 pt-8 border-t border-gray-200 text-center">
+                <p class="mb-6 text-secondary">
+                  <strong>Last Updated:</strong> January 2026<br>
+                  <strong>Questions?</strong> Contact us at <a href="mailto:support@compify.com" class="text-link no-underline">support@compify.com</a>
+                </p>
+                <div class="flex gap-4 justify-center flex-wrap">
+                  <a href="/auth/register" class="btn btn-primary">Register Now</a>
+                  <a href="/faq/" class="btn btn-outline">View FAQ</a>
+                </div>
+              </div>
             </div>
           </div>
         </main>
@@ -187,237 +209,3 @@ import Navigation from '../components/Navigation.astro';
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero-section {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .page-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .rules-content {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  
-  .table-of-contents {
-    position: sticky;
-    top: 2rem;
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  .table-of-contents h2 {
-    color: #1e40af;
-    font-size: 1.125rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .table-of-contents ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .table-of-contents li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .table-of-contents a {
-    color: #4b5563;
-    text-decoration: none;
-    font-size: 0.875rem;
-    transition: color 0.2s ease;
-  }
-  
-  .table-of-contents a:hover {
-    color: #1e40af;
-  }
-  
-  .rules-main {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-  }
-  
-  .rule-section {
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #e5e7eb;
-  }
-  
-  .rule-section:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
-  
-  .rule-section h2 {
-    color: #1e40af;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .rule-section h3 {
-    color: #374151;
-    font-size: 1.25rem;
-    margin: 1.5rem 0 0.75rem 0;
-    font-weight: 600;
-  }
-  
-  .rule-section p {
-    color: #4b5563;
-    line-height: 1.7;
-    margin-bottom: 1rem;
-  }
-  
-  .rule-section ul {
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
-  }
-  
-  .rule-section li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .rule-section strong {
-    color: #1e40af;
-    font-weight: 600;
-  }
-  
-  .rules-footer {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 2px solid #e5e7eb;
-    text-align: center;
-  }
-  
-  .rules-footer p {
-    color: #6b7280;
-    margin-bottom: 2rem;
-  }
-  
-  .rules-footer a {
-    color: #1e40af;
-    text-decoration: none;
-  }
-  
-  .rules-footer a:hover {
-    text-decoration: underline;
-  }
-  
-  .cta-section {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  .btn-outline {
-    color: #1e40af;
-    border-color: #1e40af;
-    background: transparent;
-  }
-  
-  .btn-outline:hover {
-    background: #1e40af;
-    color: white;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: 2rem;
-    }
-    
-    .rules-content {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .table-of-contents {
-      position: static;
-      order: 2;
-    }
-    
-    .rules-main {
-      order: 1;
-    }
-    
-    .cta-section {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .btn {
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
-    }
-  }
-  
-  /* Smooth scrolling for anchor links */
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  /* Highlight target sections */
-  .rule-section:target {
-    background: #fef3c7;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    margin: -1rem;
-    transition: background-color 0.3s ease;
-  }
-</style>

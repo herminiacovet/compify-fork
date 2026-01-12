@@ -26,11 +26,65 @@
             overflow: hidden;
         }
         
+        /* Navigation styles */
+        .game-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 10px 20px;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .game-nav .logo {
+            color: #4a90e2;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .game-nav .nav-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .game-nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .game-nav a:hover {
+            background: rgba(74, 144, 226, 0.2);
+            color: #4a90e2;
+        }
+        
+        .game-nav .btn-home {
+            background: rgba(74, 144, 226, 0.2);
+            border: 1px solid #4a90e2;
+        }
+        
+        .game-nav .btn-home:hover {
+            background: #4a90e2;
+            color: #ffffff;
+        }
+        
         #game-container {
             border: 2px solid #333;
             border-radius: 8px;
             box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
             background: #000;
+            margin-top: 60px; /* Account for navigation */
         }
         
         .game-info {
@@ -53,15 +107,44 @@
         
         /* Responsive design for mobile */
         @media (max-width: 850px) {
+            .game-nav {
+                padding: 8px 15px;
+            }
+            
+            .game-nav .logo {
+                font-size: 16px;
+            }
+            
+            .game-nav a {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .game-nav .nav-links {
+                gap: 10px;
+            }
+            
             #game-container {
                 transform: scale(0.9);
                 border: 1px solid #333;
+                margin-top: 50px;
             }
         }
         
         @media (max-width: 750px) {
             #game-container {
                 transform: scale(0.8);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-nav .nav-links {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .game-nav {
+                padding: 8px 10px;
             }
         }
         
@@ -77,23 +160,101 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="game-nav">
+        <a href="../" class="logo">Compify</a>
+        <div class="nav-links">
+            <a href="../">Home</a>
+            <a href="../about/">About</a>
+            <a href="../rules/">Rules</a>
+            <a href="../dashboard">Dashboard</a>
+            <a href="../" class="btn-home">← Back to Site</a>
+        </div>
+    </nav>
+    
     <div id="loading" class="loading">Loading game...</div>
     <div id="game-container"></div>
     <div class="game-info">
-        Use arrow keys to move • Space to shoot • ESC to pause
+        Use arrow keys to move • Space to shoot • ESC to pause • Press H to toggle navigation
     </div>
     
     <script type="module" src="./src/main.js"></script>
     
     <script>
+        // Environment-aware navigation URLs
+        function getNavigationURLs() {
+            const isDev = window.location.hostname === 'localhost';
+            const baseURL = isDev ? 'http://localhost:4321' : '';
+            
+            return {
+                home: baseURL + '/',
+                about: baseURL + '/about/',
+                rules: baseURL + '/rules/',
+                dashboard: baseURL + '/dashboard'
+            };
+        }
+        
+        // Update navigation links based on environment
+        function updateNavigationLinks() {
+            const urls = getNavigationURLs();
+            const nav = document.querySelector('.game-nav');
+            
+            if (nav) {
+                // Update logo link
+                const logo = nav.querySelector('.logo');
+                if (logo) logo.href = urls.home;
+                
+                // Update navigation links
+                const links = nav.querySelectorAll('.nav-links a');
+                links.forEach(link => {
+                    const text = link.textContent.trim();
+                    switch(text) {
+                        case 'Home':
+                        case '← Back to Site':
+                            link.href = urls.home;
+                            break;
+                        case 'About':
+                            link.href = urls.about;
+                            break;
+                        case 'Rules':
+                            link.href = urls.rules;
+                            break;
+                        case 'Dashboard':
+                            link.href = urls.dashboard;
+                            break;
+                    }
+                });
+            }
+        }
+        
+        // Toggle navigation visibility
+        function toggleNavigation() {
+            const nav = document.querySelector('.game-nav');
+            if (nav) {
+                nav.style.display = nav.style.display === 'none' ? 'flex' : 'none';
+            }
+        }
+        
         // Hide loading indicator once game starts
         window.addEventListener('load', () => {
+            // Update navigation links for current environment
+            updateNavigationLinks();
+            
             setTimeout(() => {
                 const loading = document.getElementById('loading');
                 if (loading) {
                     loading.style.display = 'none';
                 }
             }, 1000);
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (event) => {
+            // Toggle navigation with 'H' key
+            if (event.key.toLowerCase() === 'h') {
+                toggleNavigation();
+                event.preventDefault();
+            }
         });
         
         // Prevent context menu on right click

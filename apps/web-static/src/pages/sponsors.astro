@@ -9,20 +9,22 @@ import Navigation from '../components/Navigation.astro';
 >
   <Navigation slot="header" />
   
-  <section class="hero-section">
+  <section class="hero">
     <div class="container">
-      <h1 class="page-title">Our Sponsors</h1>
-      <p class="page-subtitle">
-        Partnering with industry leaders to bring you world-class programming competitions
-      </p>
+      <div class="text-center py-12">
+        <h1 class="text-4xl font-bold mb-4 text-hero-primary">Our Sponsors</h1>
+        <p class="text-xl max-w-2xl mx-auto text-hero-secondary">
+          Partnering with industry leaders to bring you world-class programming competitions
+        </p>
+      </div>
     </div>
   </section>
   
-  <section class="content-section">
+  <section class="section">
     <div class="container">
-      <div class="sponsors-intro">
-        <h2>Thank You to Our Partners</h2>
-        <p>
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-semibold mb-6 text-primary">Thank You to Our Partners</h2>
+        <p class="text-lg text-secondary max-w-4xl mx-auto">
           Compify is made possible by the generous support of our sponsors who share our vision 
           of advancing programming education and fostering innovation in the developer community. 
           These partnerships enable us to provide free competitions, valuable prizes, and 
@@ -31,37 +33,45 @@ import Navigation from '../components/Navigation.astro';
       </div>
       
       <!-- Title Sponsors -->
-      <section class="sponsor-tier">
-        <h3 class="tier-title">Title Sponsors</h3>
-        <div class="sponsors-grid title-sponsors">
-          <div class="sponsor-card featured">
-            <div class="sponsor-logo">
-              <div class="logo-placeholder">TechCorp</div>
-            </div>
-            <div class="sponsor-info">
-              <h4>TechCorp Solutions</h4>
-              <p>
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-center mb-8 text-primary">Title Sponsors</h3>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="card border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-yellow-100">
+            <div class="card-body text-center">
+              <div class="mb-6">
+                <div class="inline-block bg-primary text-white px-8 py-4 rounded-lg text-2xl font-bold">
+                  TechCorp
+                </div>
+              </div>
+              <h4 class="text-xl font-semibold mb-4 text-primary">TechCorp Solutions</h4>
+              <p class="text-secondary mb-4">
                 Leading cloud infrastructure provider supporting scalable competition platforms 
                 and providing hosting services for our global developer community.
               </p>
-              <div class="sponsor-contribution">
-                <strong>Contribution:</strong> Platform hosting, cloud infrastructure, and technical expertise
+              <div class="bg-blue-50 p-4 rounded-md">
+                <div class="text-sm">
+                  <strong class="text-primary">Contribution:</strong> Platform hosting, cloud infrastructure, and technical expertise
+                </div>
               </div>
             </div>
           </div>
           
-          <div class="sponsor-card featured">
-            <div class="sponsor-logo">
-              <div class="logo-placeholder">DevTools</div>
-            </div>
-            <div class="sponsor-info">
-              <h4>DevTools Inc.</h4>
-              <p>
+          <div class="card border-2 border-yellow-300 bg-gradient-to-br from-yellow-50 to-yellow-100">
+            <div class="card-body text-center">
+              <div class="mb-6">
+                <div class="inline-block bg-primary text-white px-8 py-4 rounded-lg text-2xl font-bold">
+                  DevTools
+                </div>
+              </div>
+              <h4 class="text-xl font-semibold mb-4 text-primary">DevTools Inc.</h4>
+              <p class="text-secondary mb-4">
                 Premier development tools company providing IDE licenses, debugging tools, 
                 and development resources for competition participants.
               </p>
-              <div class="sponsor-contribution">
-                <strong>Contribution:</strong> Software licenses, development tools, and educational resources
+              <div class="bg-blue-50 p-4 rounded-md">
+                <div class="text-sm">
+                  <strong class="text-primary">Contribution:</strong> Software licenses, development tools, and educational resources
+                </div>
               </div>
             </div>
           </div>
@@ -69,145 +79,191 @@ import Navigation from '../components/Navigation.astro';
       </section>
       
       <!-- Gold Sponsors -->
-      <section class="sponsor-tier">
-        <h3 class="tier-title">Gold Sponsors</h3>
-        <div class="sponsors-grid gold-sponsors">
-          <div class="sponsor-card">
-            <div class="sponsor-logo">
-              <div class="logo-placeholder">CodeAcademy</div>
-            </div>
-            <div class="sponsor-info">
-              <h4>CodeAcademy Pro</h4>
-              <p>Online learning platform offering premium courses and certifications to competition winners.</p>
-            </div>
-          </div>
-          
-          <div class="sponsor-card">
-            <div class="sponsor-logo">
-              <div class="logo-placeholder">DataFlow</div>
-            </div>
-            <div class="sponsor-info">
-              <h4>DataFlow Systems</h4>
-              <p>Big data analytics company providing real-world problem sets and internship opportunities.</p>
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-center mb-8 text-primary">Gold Sponsors</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="mb-4">
+                <div class="inline-block bg-primary text-white px-6 py-3 rounded-lg text-lg font-bold">
+                  CodeAcademy
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold mb-3 text-primary">CodeAcademy Pro</h4>
+              <p class="text-secondary text-sm">
+                Online learning platform offering premium courses and certifications to competition winners.
+              </p>
             </div>
           </div>
           
-          <div class="sponsor-card">
-            <div class="sponsor-logo">
-              <div class="logo-placeholder">CloudNet</div>
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="mb-4">
+                <div class="inline-block bg-primary text-white px-6 py-3 rounded-lg text-lg font-bold">
+                  DataFlow
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold mb-3 text-primary">DataFlow Systems</h4>
+              <p class="text-secondary text-sm">
+                Big data analytics company providing real-world problem sets and internship opportunities.
+              </p>
             </div>
-            <div class="sponsor-info">
-              <h4>CloudNet Services</h4>
-              <p>Networking solutions provider supporting our global competition infrastructure.</p>
+          </div>
+          
+          <div class="card">
+            <div class="card-body text-center">
+              <div class="mb-4">
+                <div class="inline-block bg-primary text-white px-6 py-3 rounded-lg text-lg font-bold">
+                  CloudNet
+                </div>
+              </div>
+              <h4 class="text-lg font-semibold mb-3 text-primary">CloudNet Services</h4>
+              <p class="text-secondary text-sm">
+                Networking solutions provider supporting our global competition infrastructure.
+              </p>
             </div>
           </div>
         </div>
       </section>
       
       <!-- Silver Sponsors -->
-      <section class="sponsor-tier">
-        <h3 class="tier-title">Silver Sponsors</h3>
-        <div class="sponsors-grid silver-sponsors">
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">BookTech</div>
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-center mb-8 text-primary">Silver Sponsors</h3>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  BookTech
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">BookTech Publishing</h4>
             </div>
-            <h4>BookTech Publishing</h4>
           </div>
           
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">StartupHub</div>
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  StartupHub
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">StartupHub Incubator</h4>
             </div>
-            <h4>StartupHub Incubator</h4>
           </div>
           
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">OpenSource</div>
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  OpenSource
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">OpenSource Foundation</h4>
             </div>
-            <h4>OpenSource Foundation</h4>
           </div>
           
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">EduTech</div>
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  EduTech
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">EduTech Solutions</h4>
             </div>
-            <h4>EduTech Solutions</h4>
           </div>
           
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">DevCommunity</div>
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  DevCommunity
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">DevCommunity Network</h4>
             </div>
-            <h4>DevCommunity Network</h4>
           </div>
           
-          <div class="sponsor-card compact">
-            <div class="sponsor-logo small">
-              <div class="logo-placeholder">CodeReview</div>
+          <div class="card">
+            <div class="card-body text-center p-4">
+              <div class="mb-3">
+                <div class="inline-block bg-primary text-white px-4 py-2 rounded text-sm font-bold">
+                  CodeReview
+                </div>
+              </div>
+              <h4 class="text-sm font-semibold text-primary">CodeReview Platform</h4>
             </div>
-            <h4>CodeReview Platform</h4>
           </div>
         </div>
       </section>
       
       <!-- Community Partners -->
-      <section class="sponsor-tier">
-        <h3 class="tier-title">Community Partners</h3>
-        <div class="community-partners">
-          <p>
-            We're proud to partner with these organizations that share our commitment to 
-            developer education and community building:
-          </p>
-          <div class="partners-list">
-            <span class="partner-name">Global Developers Alliance</span>
-            <span class="partner-name">Women in Tech Initiative</span>
-            <span class="partner-name">Student Programming Society</span>
-            <span class="partner-name">Open Source Contributors Network</span>
-            <span class="partner-name">Coding Bootcamp Association</span>
-            <span class="partner-name">Tech Diversity Coalition</span>
+      <section class="mb-16">
+        <h3 class="text-2xl font-semibold text-center mb-8 text-primary">Community Partners</h3>
+        <div class="card bg-gray-50">
+          <div class="card-body text-center">
+            <p class="text-secondary mb-6">
+              We're proud to partner with these organizations that share our commitment to 
+              developer education and community building:
+            </p>
+            <div class="flex flex-wrap gap-3 justify-center">
+              <span class="badge badge-outline">Global Developers Alliance</span>
+              <span class="badge badge-outline">Women in Tech Initiative</span>
+              <span class="badge badge-outline">Student Programming Society</span>
+              <span class="badge badge-outline">Open Source Contributors Network</span>
+              <span class="badge badge-outline">Coding Bootcamp Association</span>
+              <span class="badge badge-outline">Tech Diversity Coalition</span>
+            </div>
           </div>
         </div>
       </section>
       
       <!-- Sponsorship Information -->
-      <section class="sponsorship-info">
-        <div class="info-grid">
-          <div class="info-card">
-            <h3>Become a Sponsor</h3>
-            <p>
-              Join our mission to advance programming education and connect with 
-              thousands of talented developers worldwide. We offer various sponsorship 
-              packages to fit different budgets and goals.
-            </p>
-            <ul class="benefits-list">
-              <li>Brand visibility to global developer audience</li>
-              <li>Access to top programming talent for recruitment</li>
-              <li>Thought leadership opportunities</li>
-              <li>Custom partnership packages available</li>
-            </ul>
-            <a href="mailto:sponsors@compify.com" class="btn btn-primary">Contact Us</a>
+      <section>
+        <div class="grid lg:grid-cols-2 gap-8">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Become a Sponsor</h3>
+            </div>
+            <div class="card-body">
+              <p class="text-secondary mb-6">
+                Join our mission to advance programming education and connect with 
+                thousands of talented developers worldwide. We offer various sponsorship 
+                packages to fit different budgets and goals.
+              </p>
+              <ul class="space-y-2 mb-6 text-secondary">
+                <li>✓ Brand visibility to global developer audience</li>
+                <li>✓ Access to top programming talent for recruitment</li>
+                <li>✓ Thought leadership opportunities</li>
+                <li>✓ Custom partnership packages available</li>
+              </ul>
+              <a href="mailto:sponsors@compify.com" class="btn btn-primary">Contact Us</a>
+            </div>
           </div>
           
-          <div class="info-card">
-            <h3>Sponsorship Tiers</h3>
-            <div class="tier-info">
-              <div class="tier-item">
-                <strong>Title Sponsor:</strong> $50,000+
-                <span>Premium branding, custom challenges, recruitment access</span>
-              </div>
-              <div class="tier-item">
-                <strong>Gold Sponsor:</strong> $25,000+
-                <span>Logo placement, prize contributions, networking events</span>
-              </div>
-              <div class="tier-item">
-                <strong>Silver Sponsor:</strong> $10,000+
-                <span>Website listing, social media mentions, community access</span>
-              </div>
-              <div class="tier-item">
-                <strong>Community Partner:</strong> In-kind
-                <span>Resource sharing, cross-promotion, educational partnerships</span>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Sponsorship Tiers</h3>
+            </div>
+            <div class="card-body">
+              <div class="space-y-4">
+                <div class="p-4 bg-gray-50 rounded-md">
+                  <div class="font-semibold text-primary">Title Sponsor: $50,000+</div>
+                  <div class="text-sm text-secondary">Premium branding, custom challenges, recruitment access</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-md">
+                  <div class="font-semibold text-primary">Gold Sponsor: $25,000+</div>
+                  <div class="text-sm text-secondary">Logo placement, prize contributions, networking events</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-md">
+                  <div class="font-semibold text-primary">Silver Sponsor: $10,000+</div>
+                  <div class="text-sm text-secondary">Website listing, social media mentions, community access</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-md">
+                  <div class="font-semibold text-primary">Community Partner: In-kind</div>
+                  <div class="text-sm text-secondary">Resource sharing, cross-promotion, educational partnerships</div>
+                </div>
               </div>
             </div>
           </div>
@@ -216,315 +272,3 @@ import Navigation from '../components/Navigation.astro';
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero-section {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .page-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .sponsors-intro {
-    text-align: center;
-    margin-bottom: 4rem;
-  }
-  
-  .sponsors-intro h2 {
-    color: #1e40af;
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .sponsors-intro p {
-    color: #4b5563;
-    font-size: 1.125rem;
-    line-height: 1.7;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .sponsor-tier {
-    margin-bottom: 4rem;
-  }
-  
-  .tier-title {
-    color: #1e40af;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-weight: 600;
-  }
-  
-  .sponsors-grid {
-    display: grid;
-    gap: 2rem;
-  }
-  
-  .title-sponsors {
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-  }
-  
-  .gold-sponsors {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-  
-  .silver-sponsors {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-  
-  .sponsor-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
-  
-  .sponsor-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .sponsor-card.featured {
-    border: 2px solid #fbbf24;
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
-  }
-  
-  .sponsor-card.compact {
-    padding: 1.5rem;
-    text-align: center;
-  }
-  
-  .sponsor-logo {
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sponsor-logo.small {
-    margin-bottom: 1rem;
-  }
-  
-  .logo-placeholder {
-    background: #1e40af;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    font-size: 1.25rem;
-  }
-  
-  .sponsor-logo.small .logo-placeholder {
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-  }
-  
-  .sponsor-info h4 {
-    color: #1e40af;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .sponsor-card.compact h4 {
-    font-size: 1.125rem;
-    margin-bottom: 0;
-  }
-  
-  .sponsor-info p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  .sponsor-contribution {
-    background: rgba(30, 64, 175, 0.1);
-    padding: 1rem;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    color: #1e40af;
-  }
-  
-  .community-partners {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    text-align: center;
-  }
-  
-  .community-partners p {
-    color: #4b5563;
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-  }
-  
-  .partners-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  .partner-name {
-    background: white;
-    color: #1e40af;
-    padding: 0.5rem 1rem;
-    border-radius: 1rem;
-    font-weight: 500;
-    font-size: 0.875rem;
-    border: 1px solid #e5e7eb;
-  }
-  
-  .sponsorship-info {
-    margin-top: 4rem;
-    padding-top: 3rem;
-    border-top: 2px solid #e5e7eb;
-  }
-  
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 3rem;
-  }
-  
-  .info-card {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 2rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .info-card h3 {
-    color: #1e40af;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-  
-  .info-card p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-  
-  .benefits-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2rem;
-  }
-  
-  .benefits-list li {
-    color: #4b5563;
-    padding: 0.5rem 0;
-    position: relative;
-    padding-left: 1.5rem;
-  }
-  
-  .benefits-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: #10b981;
-    font-weight: bold;
-  }
-  
-  .tier-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  
-  .tier-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-    padding: 1rem;
-    background: #f9fafb;
-    border-radius: 0.375rem;
-  }
-  
-  .tier-item strong {
-    color: #1e40af;
-    font-weight: 600;
-  }
-  
-  .tier-item span {
-    color: #6b7280;
-    font-size: 0.875rem;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: 2rem;
-    }
-    
-    .sponsors-intro h2 {
-      font-size: 2rem;
-    }
-    
-    .title-sponsors,
-    .gold-sponsors {
-      grid-template-columns: 1fr;
-    }
-    
-    .silver-sponsors {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-    
-    .info-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .partners-list {
-      justify-content: flex-start;
-    }
-  }
-</style>

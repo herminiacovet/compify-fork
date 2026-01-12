@@ -9,453 +9,208 @@ import Navigation from '../components/Navigation.astro';
 >
   <Navigation slot="header" />
   
-  <section class="hero-section">
+  <section class="hero">
     <div class="container">
-      <h1 class="page-title">Competition Timeline</h1>
-      <p class="page-subtitle">
-        Important dates and milestones for upcoming Compify competitions
-      </p>
+      <div class="text-center py-12">
+        <h1 class="text-4xl font-bold mb-4 text-hero-primary">Competition Timeline</h1>
+        <p class="text-xl max-w-2xl mx-auto text-hero-secondary">
+          Important dates and milestones for upcoming Compify competitions
+        </p>
+      </div>
     </div>
   </section>
   
-  <section class="content-section">
+  <section class="section">
     <div class="container">
-      <div class="timeline-content">
-        <div class="timeline-header">
-          <h2>2026 Competition Schedule</h2>
-          <p>Mark your calendars and prepare for exciting programming challenges throughout the year!</p>
-        </div>
-        
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-semibold mb-4 text-primary">2026 Competition Schedule</h2>
+        <p class="text-lg text-secondary max-w-2xl mx-auto">
+          Mark your calendars and prepare for exciting programming challenges throughout the year!
+        </p>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
         <div class="timeline">
           <div class="timeline-item">
             <div class="timeline-marker current"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">January 15, 2026</div>
-              <h3>Registration Opens</h3>
-              <p>
-                Registration for the Spring Programming Championship opens. 
-                Early bird participants get exclusive practice problems and resources.
-              </p>
-              <div class="timeline-status current">Current Phase</div>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">January 15, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Registration Opens</h3>
+                <p class="text-secondary mb-4">
+                  Registration for the Spring Programming Championship opens. 
+                  Early bird participants get exclusive practice problems and resources.
+                </p>
+                <span class="badge badge-success">Current Phase</span>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker upcoming"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">February 1, 2026</div>
-              <h3>Practice Round</h3>
-              <p>
-                Free practice competition to familiarize participants with the platform, 
-                submission process, and competition format. No prizes, just learning!
-              </p>
-              <div class="timeline-status upcoming">Upcoming</div>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">February 1, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Practice Round</h3>
+                <p class="text-secondary mb-4">
+                  Free practice competition to familiarize participants with the platform, 
+                  submission process, and competition format. No prizes, just learning!
+                </p>
+                <span class="badge badge-primary">Upcoming</span>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker upcoming"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">February 15, 2026</div>
-              <h3>Registration Deadline</h3>
-              <p>
-                Final deadline for Spring Championship registration. 
-                Late registrations will not be accepted after this date.
-              </p>
-              <div class="timeline-status deadline">Deadline</div>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">February 15, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Registration Deadline</h3>
+                <p class="text-secondary mb-4">
+                  Final deadline for Spring Championship registration. 
+                  Late registrations will not be accepted after this date.
+                </p>
+                <span class="badge badge-warning">Deadline</span>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker upcoming"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">March 1, 2026</div>
-              <h3>Spring Championship</h3>
-              <p>
-                Main competition event featuring algorithmic challenges, 
-                data structure problems, and real-world application scenarios.
-              </p>
-              <ul class="event-details">
-                <li><strong>Duration:</strong> 4 hours</li>
-                <li><strong>Problems:</strong> 6-8 challenges</li>
-                <li><strong>Prizes:</strong> Certificates and recognition</li>
-              </ul>
-              <div class="timeline-status major-event">Major Event</div>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">March 1, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Spring Championship</h3>
+                <p class="text-secondary mb-4">
+                  Main competition event featuring algorithmic challenges, 
+                  data structure problems, and real-world application scenarios.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-md mb-4">
+                  <div class="grid md:grid-cols-3 gap-4 text-sm">
+                    <div><strong class="text-primary">Duration:</strong> 4 hours</div>
+                    <div><strong class="text-primary">Problems:</strong> 6-8 challenges</div>
+                    <div><strong class="text-primary">Prizes:</strong> Certificates and recognition</div>
+                  </div>
+                </div>
+                <span class="badge badge-error">Major Event</span>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker upcoming"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">March 8, 2026</div>
-              <h3>Results Announcement</h3>
-              <p>
-                Official results, winner announcements, and detailed solution explanations 
-                will be published. Certificates distributed to top performers.
-              </p>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">March 8, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Results Announcement</h3>
+                <p class="text-secondary">
+                  Official results, winner announcements, and detailed solution explanations 
+                  will be published. Certificates distributed to top performers.
+                </p>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker future"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">April 15, 2026</div>
-              <h3>Summer Series Registration</h3>
-              <p>
-                Registration opens for the Summer Programming Series - 
-                a month-long series of weekly competitions with increasing difficulty.
-              </p>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">April 15, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Summer Series Registration</h3>
+                <p class="text-secondary">
+                  Registration opens for the Summer Programming Series - 
+                  a month-long series of weekly competitions with increasing difficulty.
+                </p>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker future"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">May 1-31, 2026</div>
-              <h3>Summer Programming Series</h3>
-              <p>
-                Four weekly competitions throughout May, each focusing on different 
-                programming paradigms and problem-solving techniques.
-              </p>
-              <ul class="event-details">
-                <li><strong>Week 1:</strong> Dynamic Programming</li>
-                <li><strong>Week 2:</strong> Graph Algorithms</li>
-                <li><strong>Week 3:</strong> String Processing</li>
-                <li><strong>Week 4:</strong> Mathematical Problems</li>
-              </ul>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">May 1-31, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Summer Programming Series</h3>
+                <p class="text-secondary mb-4">
+                  Four weekly competitions throughout May, each focusing on different 
+                  programming paradigms and problem-solving techniques.
+                </p>
+                <div class="bg-gray-50 p-4 rounded-md">
+                  <div class="space-y-2 text-sm">
+                    <div><strong class="text-primary">Week 1:</strong> Dynamic Programming</div>
+                    <div><strong class="text-primary">Week 2:</strong> Graph Algorithms</div>
+                    <div><strong class="text-primary">Week 3:</strong> String Processing</div>
+                    <div><strong class="text-primary">Week 4:</strong> Mathematical Problems</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker future"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">September 15, 2026</div>
-              <h3>Fall Championship</h3>
-              <p>
-                The year's biggest competition featuring advanced challenges, 
-                team competitions, and special guest problem setters from top tech companies.
-              </p>
-              <div class="timeline-status major-event">Major Event</div>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">September 15, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Fall Championship</h3>
+                <p class="text-secondary mb-4">
+                  The year's biggest competition featuring advanced challenges, 
+                  team competitions, and special guest problem setters from top tech companies.
+                </p>
+                <span class="badge badge-error">Major Event</span>
+              </div>
             </div>
           </div>
           
           <div class="timeline-item">
             <div class="timeline-marker future"></div>
-            <div class="timeline-content-item">
-              <div class="timeline-date">December 1-24, 2026</div>
-              <h3>Holiday Coding Calendar</h3>
-              <p>
-                Daily coding challenges throughout December leading up to Christmas. 
-                Perfect for maintaining coding skills during the holiday season!
-              </p>
+            <div class="card">
+              <div class="card-body">
+                <div class="text-sm text-tertiary mb-2">December 1-24, 2026</div>
+                <h3 class="text-xl font-semibold mb-3 text-primary">Holiday Coding Calendar</h3>
+                <p class="text-secondary">
+                  Daily coding challenges throughout December leading up to Christmas. 
+                  Perfect for maintaining coding skills during the holiday season!
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        
-        <div class="timeline-footer">
-          <div class="important-notes">
-            <h3>Important Notes</h3>
-            <ul>
-              <li>All times are in UTC (Coordinated Universal Time)</li>
-              <li>Registration typically closes 2 weeks before each competition</li>
-              <li>Practice materials are available to registered participants</li>
-              <li>Email notifications sent for all major timeline updates</li>
-              <li>Schedule subject to change - check back regularly for updates</li>
+      </div>
+      
+      <div class="mt-16 grid lg:grid-cols-2 gap-8">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Important Notes</h3>
+          </div>
+          <div class="card-body">
+            <ul class="space-y-2 text-secondary">
+              <li>• All times are in UTC (Coordinated Universal Time)</li>
+              <li>• Registration typically closes 2 weeks before each competition</li>
+              <li>• Practice materials are available to registered participants</li>
+              <li>• Email notifications sent for all major timeline updates</li>
+              <li>• Schedule subject to change - check back regularly for updates</li>
             </ul>
           </div>
-          
-          <div class="cta-section">
-            <a href="/register" class="btn btn-primary btn-large">Register Now</a>
-            <a href="/rules" class="btn btn-outline btn-large">View Rules</a>
+        </div>
+        
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Get Started</h3>
+          </div>
+          <div class="card-body">
+            <p class="text-secondary mb-6">
+              Ready to join the competition? Register now to secure your spot 
+              and get access to practice materials.
+            </p>
+            <div class="space-y-4">
+              <a href="/auth/register" class="btn btn-primary btn-full">Register Now</a>
+              <a href="/rules/" class="btn btn-outline btn-full">View Rules</a>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </section>
 </Layout>
-
-<style>
-  .hero-section {
-    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-    color: white;
-    padding: 3rem 0;
-    text-align: center;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-  
-  .page-title {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-  
-  .page-subtitle {
-    font-size: 1.25rem;
-    opacity: 0.9;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .content-section {
-    padding: 4rem 0;
-  }
-  
-  .timeline-header {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-  
-  .timeline-header h2 {
-    color: #1e40af;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .timeline-header p {
-    color: #6b7280;
-    font-size: 1.125rem;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 30px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: #e5e7eb;
-  }
-  
-  .timeline-item {
-    position: relative;
-    margin-bottom: 3rem;
-    padding-left: 80px;
-  }
-  
-  .timeline-marker {
-    position: absolute;
-    left: 20px;
-    top: 0;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    border: 3px solid #e5e7eb;
-    background: white;
-  }
-  
-  .timeline-marker.current {
-    border-color: #10b981;
-    background: #10b981;
-  }
-  
-  .timeline-marker.upcoming {
-    border-color: #3b82f6;
-    background: #3b82f6;
-  }
-  
-  .timeline-marker.future {
-    border-color: #6b7280;
-    background: white;
-  }
-  
-  .timeline-content-item {
-    background: white;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .timeline-date {
-    color: #6b7280;
-    font-size: 0.875rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-  
-  .timeline-content-item h3 {
-    color: #1e40af;
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-  }
-  
-  .timeline-content-item p {
-    color: #4b5563;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-  
-  .event-details {
-    list-style: none;
-    padding: 0;
-    margin: 1rem 0;
-    background: #f9fafb;
-    border-radius: 0.375rem;
-    padding: 1rem;
-  }
-  
-  .event-details li {
-    color: #4b5563;
-    margin-bottom: 0.5rem;
-    font-size: 0.875rem;
-  }
-  
-  .event-details strong {
-    color: #1e40af;
-  }
-  
-  .timeline-status {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-  
-  .timeline-status.current {
-    background: #d1fae5;
-    color: #065f46;
-  }
-  
-  .timeline-status.upcoming {
-    background: #dbeafe;
-    color: #1e40af;
-  }
-  
-  .timeline-status.deadline {
-    background: #fef3c7;
-    color: #92400e;
-  }
-  
-  .timeline-status.major-event {
-    background: #fce7f3;
-    color: #be185d;
-  }
-  
-  .timeline-footer {
-    margin-top: 4rem;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 3rem;
-    align-items: start;
-  }
-  
-  .important-notes {
-    background: #f9fafb;
-    border: 1px solid #e5e7eb;
-    border-radius: 0.5rem;
-    padding: 1.5rem;
-  }
-  
-  .important-notes h3 {
-    color: #1e40af;
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-  }
-  
-  .important-notes ul {
-    color: #4b5563;
-    line-height: 1.6;
-    padding-left: 1.5rem;
-  }
-  
-  .important-notes li {
-    margin-bottom: 0.5rem;
-  }
-  
-  .cta-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-  }
-  
-  .btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 0.375rem;
-    text-decoration: none;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    border: 1px solid transparent;
-    display: inline-block;
-    text-align: center;
-  }
-  
-  .btn-large {
-    padding: 0.875rem 2rem;
-    font-size: 1.125rem;
-  }
-  
-  .btn-primary {
-    background: #1e40af;
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background: #1d4ed8;
-  }
-  
-  .btn-outline {
-    color: #1e40af;
-    border-color: #1e40af;
-    background: transparent;
-  }
-  
-  .btn-outline:hover {
-    background: #1e40af;
-    color: white;
-  }
-  
-  /* Mobile responsive */
-  @media (max-width: 768px) {
-    .page-title {
-      font-size: 2rem;
-    }
-    
-    .timeline-header h2 {
-      font-size: 2rem;
-    }
-    
-    .timeline::before {
-      left: 15px;
-    }
-    
-    .timeline-marker {
-      left: 5px;
-    }
-    
-    .timeline-item {
-      padding-left: 50px;
-    }
-    
-    .timeline-footer {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .cta-section {
-      align-items: center;
-    }
-    
-    .btn-large {
-      width: 100%;
-      max-width: 300px;
-    }
-  }
-</style>

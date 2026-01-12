@@ -4,16 +4,18 @@
   "description": "Compify MVP - Competition website with monorepo architecture",
   "private": true,
   "scripts": {
+    "copy-design-system": "node scripts/copy-design-system.js",
+    "build-integration": "node scripts/build-integration.js",
     "dev": "npm run dev:all",
     "dev:all": "concurrently \"npm run dev:static\" \"npm run dev:backend\" \"npm run dev:sandbox\"",
-    "dev:static": "cd apps/web-static && npm run dev",
-    "dev:backend": "cd apps/backend && go run cmd/main.go",
-    "dev:sandbox": "cd apps/sandbox && npm run dev",
+    "dev:static": "npm run build-integration && cd apps/web-static && npm run dev",
+    "dev:backend": "npm run copy-design-system && cd apps/backend && go run cmd/main.go",
+    "dev:sandbox": "npm run copy-design-system && cd apps/sandbox && npm run dev",
     "build": "npm run build:all",
     "build:all": "npm run build:static && npm run build:backend && npm run build:sandbox",
-    "build:static": "cd apps/web-static && npm run build",
-    "build:backend": "cd apps/backend && go build -o ../../dist/backend ./cmd",
-    "build:sandbox": "cd apps/sandbox && npm run build",
+    "build:static": "npm run build-integration && cd apps/web-static && npm run build",
+    "build:backend": "npm run copy-design-system && cd apps/backend && go build -o ../../dist/backend ./cmd",
+    "build:sandbox": "npm run copy-design-system && cd apps/sandbox && npm run build",
     "install:all": "npm run install:static && npm run install:sandbox",
     "install:static": "cd apps/web-static && npm install",
     "install:sandbox": "cd apps/sandbox && npm install",
@@ -32,7 +34,8 @@
   "devDependencies": {
     "concurrently": "^8.2.2",
     "vitest": "^1.0.0",
-    "node-fetch": "^3.3.0"
+    "node-fetch": "^3.3.0",
+    "fs-extra": "^11.1.1"
   },
   "workspaces": [
     "apps/web-static",
