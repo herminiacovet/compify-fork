@@ -114,8 +114,14 @@ func (s *Server) Start() error {
 	// Apply middleware chain
 	handler := s.applyMiddleware(s.router)
 	
-	addr := ":" + s.config.Port
-	log.Printf("Starting Compify backend server on port %s (env: %s)", s.config.Port, s.config.Environment)
+	// Get host from environment (required for AlwaysData and other hosts)
+	port := os.Getenv("ALWAYSDATA_HTTP_PORT")
+	if port == "" {
+		port = s.config.Port
+	}
+
+	addr := ":" + port
+	log.Printf("Starting Compify backend on %s (env: %s)", addr, s.config.Environment)
 	
 	server := &http.Server{
 		Addr:         addr,

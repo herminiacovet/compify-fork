@@ -1,14 +1,15 @@
 # Compify MVP Routing Configuration
 # This file configures URL routing and proxying for Cloudflare Pages
+# Generated dynamically from BACKEND_URL environment variable
 
 # Backend page routes - proxy to backend server
-/login    https://compify-api.onrender.com/login    200
-/register https://compify-api.onrender.com/register 200
-/dashboard https://compify-api.onrender.com/dashboard 200
+/login    https://compify.alwaysdata.net/login    200
+/register https://compify.alwaysdata.net/register 200
+/dashboard https://compify.alwaysdata.net/dashboard 200
 
 # API and Authentication form routes - proxy to backend server
-/auth/*  https://compify-api.onrender.com/auth/:splat  200
-/api/*   https://compify-api.onrender.com/api/:splat   200
+/auth/*  https://compify.alwaysdata.net/auth/:splat  200
+/api/*   https://compify.alwaysdata.net/api/:splat   200
 
 # Design system assets - serve from static files
 /design-system/*  /shared/design-system/:splat  200
@@ -18,7 +19,7 @@
 /sandbox    /sandbox/index.html  200
 
 # Health check proxy (for monitoring)
-/health  https://compify-api.onrender.com/health  200
+/health  https://compify.alwaysdata.net/health  200
 
 # Trailing slash redirects for consistency
 /about   /about/   301
